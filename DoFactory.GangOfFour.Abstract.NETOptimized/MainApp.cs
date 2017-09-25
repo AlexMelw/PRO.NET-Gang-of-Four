@@ -93,8 +93,7 @@ namespace DoFactory.GangOfFour.Abstract.NETOptimized
         public void Eat(IHerbivore h)
         {
             // Eat Wildebeest
-            Console.WriteLine(GetType().Name +
-                              " eats " + h.GetType().Name);
+            Console.WriteLine(GetType().Name + " eats " + h.GetType().Name);
         }
     }
 
@@ -111,8 +110,7 @@ namespace DoFactory.GangOfFour.Abstract.NETOptimized
         public void Eat(IHerbivore h)
         {
             // Eat Bison
-            Console.WriteLine(GetType().Name +
-                              " eats " + h.GetType().Name);
+            Console.WriteLine(GetType().Name + " eats " + h.GetType().Name);
         }
     }
 

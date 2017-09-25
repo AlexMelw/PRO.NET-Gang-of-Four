@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Abstract.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Structural
-    /// Abstract Factory Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Abstract Factory Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         public static void Main()
         {
@@ -29,7 +29,7 @@ namespace DoFactory.GangOfFour.Abstract.Structural
     }
 
     /// <summary>
-    /// The 'AbstractFactory' abstract class
+    ///     The 'AbstractFactory' abstract class
     /// </summary>
     abstract class AbstractFactory
     {
@@ -39,7 +39,7 @@ namespace DoFactory.GangOfFour.Abstract.Structural
 
 
     /// <summary>
-    /// The 'ConcreteFactory1' class
+    ///     The 'ConcreteFactory1' class
     /// </summary>
     class ConcreteFactory1 : AbstractFactory
     {
@@ -47,6 +47,7 @@ namespace DoFactory.GangOfFour.Abstract.Structural
         {
             return new ProductA1();
         }
+
         public override AbstractProductB CreateProductB()
         {
             return new ProductB1();
@@ -54,7 +55,7 @@ namespace DoFactory.GangOfFour.Abstract.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteFactory2' class
+    ///     The 'ConcreteFactory2' class
     /// </summary>
     class ConcreteFactory2 : AbstractFactory
     {
@@ -62,6 +63,7 @@ namespace DoFactory.GangOfFour.Abstract.Structural
         {
             return new ProductA2();
         }
+
         public override AbstractProductB CreateProductB()
         {
             return new ProductB2();
@@ -69,14 +71,12 @@ namespace DoFactory.GangOfFour.Abstract.Structural
     }
 
     /// <summary>
-    /// The 'AbstractProductA' abstract class
+    ///     The 'AbstractProductA' abstract class
     /// </summary>
-    abstract class AbstractProductA
-    {
-    }
+    abstract class AbstractProductA { }
 
     /// <summary>
-    /// The 'AbstractProductB' abstract class
+    ///     The 'AbstractProductB' abstract class
     /// </summary>
     abstract class AbstractProductB
     {
@@ -85,50 +85,46 @@ namespace DoFactory.GangOfFour.Abstract.Structural
 
 
     /// <summary>
-    /// The 'ProductA1' class
+    ///     The 'ProductA1' class
     /// </summary>
-    class ProductA1 : AbstractProductA
-    {
-    }
+    class ProductA1 : AbstractProductA { }
 
     /// <summary>
-    /// The 'ProductB1' class
+    ///     The 'ProductB1' class
     /// </summary>
     class ProductB1 : AbstractProductB
     {
         public override void Interact(AbstractProductA a)
         {
-            Console.WriteLine(this.GetType().Name +
-                " interacts with " + a.GetType().Name);
+            Console.WriteLine(GetType().Name + " interacts with " + a.GetType().Name);
         }
     }
 
     /// <summary>
-    /// The 'ProductA2' class
+    ///     The 'ProductA2' class
     /// </summary>
-    class ProductA2 : AbstractProductA
-    {
-    }
+    class ProductA2 : AbstractProductA { }
 
     /// <summary>
-    /// The 'ProductB2' class
+    ///     The 'ProductB2' class
     /// </summary>
     class ProductB2 : AbstractProductB
     {
         public override void Interact(AbstractProductA a)
         {
-            Console.WriteLine(this.GetType().Name +
-                " interacts with " + a.GetType().Name);
+            Console.WriteLine(GetType().Name + " interacts with " + a.GetType().Name);
         }
     }
 
     /// <summary>
-    /// The 'Client' class. Interaction environment for the products.
+    ///     The 'Client' class. Interaction environment for the products.
     /// </summary>
     class Client
     {
         private AbstractProductA abstractProductA;
         private AbstractProductB abstractProductB;
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Client(AbstractFactory factory)
@@ -137,10 +133,11 @@ namespace DoFactory.GangOfFour.Abstract.Structural
             abstractProductA = factory.CreateProductA();
         }
 
+        #endregion
+
         public void Run()
         {
             abstractProductB.Interact(abstractProductA);
         }
     }
 }
-
