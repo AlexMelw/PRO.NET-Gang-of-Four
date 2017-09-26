@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Bridge.NETOptimized
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Bridge Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Bridge Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -18,7 +18,7 @@ namespace DoFactory.GangOfFour.Bridge.NETOptimized
             var customers = new Customers();
 
             // Set ConcreteImplementor
-            customers.DataObject = new CustomersData { City = "Chicago" } ;
+            customers.DataObject = new CustomersData { City = "Chicago" };
 
             // Exercise the bridge
             customers.Show();
@@ -36,7 +36,7 @@ namespace DoFactory.GangOfFour.Bridge.NETOptimized
     }
 
     /// <summary>
-    /// The 'Abstraction' class
+    ///     The 'Abstraction' class
     /// </summary>
     class CustomersBase
     {
@@ -70,13 +70,12 @@ namespace DoFactory.GangOfFour.Bridge.NETOptimized
 
         public virtual void ShowAll()
         {
-            
             DataObject.ShowAllRecords();
         }
     }
 
     /// <summary>
-    /// The 'RefinedAbstraction' class
+    ///     The 'RefinedAbstraction' class
     /// </summary>
     class Customers : CustomersBase
     {
@@ -91,7 +90,7 @@ namespace DoFactory.GangOfFour.Bridge.NETOptimized
     }
 
     /// <summary>
-    /// The 'Implementor' interface
+    ///     The 'Implementor' interface
     /// </summary>
     interface IDataObject<T>
     {
@@ -105,24 +104,34 @@ namespace DoFactory.GangOfFour.Bridge.NETOptimized
     }
 
     /// <summary>
-    /// The 'ConcreteImplementor' class
+    ///     The 'ConcreteImplementor' class
     /// </summary>
     class CustomersData : IDataObject<string>
     {
+        List<string> customers;
+
+        int current = 0;
+
         // Gets or sets city
         public string City { get; set; }
 
-        List<string> customers;
-        int current = 0;
+        #region CONSTRUCTORS
 
         // Constructor
         public CustomersData()
         {
             // Simulate loading from database
             customers = new List<string>
-              { "Jim Jones", "Samual Jackson", "Allan Good",
-                "Ann Stills", "Lisa Giolani" };
+            {
+                "Jim Jones",
+                "Samual Jackson",
+                "Allan Good",
+                "Ann Stills",
+                "Lisa Giolani"
+            };
         }
+
+        #endregion
 
         public void NextRecord()
         {
@@ -163,7 +172,7 @@ namespace DoFactory.GangOfFour.Bridge.NETOptimized
         public void ShowAllRecords()
         {
             Console.WriteLine("Customer Group: " + City);
-            customers.ForEach(customer => 
+            customers.ForEach(customer =>
                 Console.WriteLine(" " + customer));
         }
     }

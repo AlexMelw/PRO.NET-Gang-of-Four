@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Memento.RealWorld
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Memento Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Memento Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -36,7 +36,7 @@ namespace DoFactory.GangOfFour.Memento.RealWorld
     }
 
     /// <summary>
-    /// The 'Originator' class
+    ///     The 'Originator' class
     /// </summary>
     class SalesProspect
     {
@@ -48,8 +48,7 @@ namespace DoFactory.GangOfFour.Memento.RealWorld
         public string Name
         {
             get { return name; }
-            set
-            {
+            set {
                 name = value;
                 Console.WriteLine("Name:   " + name);
             }
@@ -59,8 +58,7 @@ namespace DoFactory.GangOfFour.Memento.RealWorld
         public string Phone
         {
             get { return phone; }
-            set
-            {
+            set {
                 phone = value;
                 Console.WriteLine("Phone:  " + phone);
             }
@@ -70,8 +68,7 @@ namespace DoFactory.GangOfFour.Memento.RealWorld
         public double Budget
         {
             get { return budget; }
-            set
-            {
+            set {
                 budget = value;
                 Console.WriteLine("Budget: " + budget);
             }
@@ -88,28 +85,20 @@ namespace DoFactory.GangOfFour.Memento.RealWorld
         public void RestoreMemento(Memento memento)
         {
             Console.WriteLine("\nRestoring state --\n");
-            this.Name = memento.Name;
-            this.Phone = memento.Phone;
-            this.Budget = memento.Budget;
+            Name = memento.Name;
+            Phone = memento.Phone;
+            Budget = memento.Budget;
         }
     }
 
     /// <summary>
-    /// The 'Memento' class
+    ///     The 'Memento' class
     /// </summary>
     class Memento
     {
         string name;
         string phone;
         double budget;
-
-        // Constructor
-        public Memento(string name, string phone, double budget)
-        {
-            this.name = name;
-            this.phone = phone;
-            this.budget = budget;
-        }
 
         // Gets or sets name
         public string Name
@@ -131,10 +120,22 @@ namespace DoFactory.GangOfFour.Memento.RealWorld
             get { return budget; }
             set { budget = value; }
         }
+
+        #region CONSTRUCTORS
+
+        // Constructor
+        public Memento(string name, string phone, double budget)
+        {
+            this.name = name;
+            this.phone = phone;
+            this.budget = budget;
+        }
+
+        #endregion
     }
 
     /// <summary>
-    /// The 'Caretaker' class
+    ///     The 'Caretaker' class
     /// </summary>
     class ProspectMemory
     {

@@ -1,16 +1,15 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Observer.NETOptimized
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Observer Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Observer Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -43,12 +42,28 @@ namespace DoFactory.GangOfFour.Observer.NETOptimized
     }
 
     /// <summary>
-    /// The 'Subject' abstract class
+    ///     The 'Subject' abstract class
     /// </summary>
     abstract class Stock
     {
         protected string symbol;
         protected double price;
+
+        // Gets or sets the price
+        public double Price
+        {
+            get { return price; }
+            set {
+                if (price != value)
+                {
+                    price = value;
+                    OnChange(new ChangeEventArgs { Symbol = symbol, Price = price });
+                    Console.WriteLine("");
+                }
+            }
+        }
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Stock(string symbol, double price)
@@ -56,6 +71,8 @@ namespace DoFactory.GangOfFour.Observer.NETOptimized
             this.symbol = symbol;
             this.price = price;
         }
+
+        #endregion
 
         // Event
         public event EventHandler<ChangeEventArgs> Change;
@@ -78,37 +95,24 @@ namespace DoFactory.GangOfFour.Observer.NETOptimized
         {
             Change -= investor.Update;
         }
-
-        // Gets or sets the price
-        public double Price
-        {
-            get { return price; }
-            set
-            {
-                if (price != value)
-                {
-                    price = value;
-                    OnChange(new ChangeEventArgs { Symbol = symbol, Price = price });
-                    Console.WriteLine("");
-                }
-            }
-        }
     }
 
     /// <summary>
-    /// The 'ConcreteSubject' class
+    ///     The 'ConcreteSubject' class
     /// </summary>
     class IBM : Stock
     {
+        #region CONSTRUCTORS
+
         // Constructor - symbol for IBM is always same
         public IBM(double price)
-            : base("IBM", price)
-        {
-        }
+            : base("IBM", price) { }
+
+        #endregion
     }
 
     /// <summary>
-    /// The 'Observer' interface
+    ///     The 'Observer' interface
     /// </summary>
     interface IInvestor
     {
@@ -116,7 +120,7 @@ namespace DoFactory.GangOfFour.Observer.NETOptimized
     }
 
     /// <summary>
-    /// The 'ConcreteObserver' class
+    ///     The 'ConcreteObserver' class
     /// </summary>
     class Investor : IInvestor
     {
@@ -129,7 +133,7 @@ namespace DoFactory.GangOfFour.Observer.NETOptimized
         public void Update(object sender, ChangeEventArgs e)
         {
             Console.WriteLine("Notified {0} of {1}'s " +
-                "change to {2:C}", Name, e.Symbol, e.Price);
+                              "change to {2:C}", Name, e.Symbol, e.Price);
         }
     }
 }

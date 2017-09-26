@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Command.NETOptimized
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Command Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Command Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -35,7 +35,7 @@ namespace DoFactory.GangOfFour.Command.NETOptimized
     }
 
     /// <summary>
-    /// The 'Command' interface
+    ///     The 'Command' interface
     /// </summary>
     interface ICommand
     {
@@ -44,21 +44,13 @@ namespace DoFactory.GangOfFour.Command.NETOptimized
     }
 
     /// <summary>
-    /// The 'ConcreteCommand' class
+    ///     The 'ConcreteCommand' class
     /// </summary>
     class CalculatorCommand : ICommand
     {
         char @operator;
         int operand;
         Calculator calculator;
-
-        // Constructor
-        public CalculatorCommand(Calculator calculator, char @operator, int operand)
-        {
-            this.calculator = calculator;
-            this.@operator = @operator;
-            this.operand = operand;
-        }
 
         // Sets operator
         public char Operator
@@ -71,6 +63,18 @@ namespace DoFactory.GangOfFour.Command.NETOptimized
         {
             set { operand = value; }
         }
+
+        #region CONSTRUCTORS
+
+        // Constructor
+        public CalculatorCommand(Calculator calculator, char @operator, int operand)
+        {
+            this.calculator = calculator;
+            this.@operator = @operator;
+            this.operand = operand;
+        }
+
+        #endregion
 
         // Execute command
         public void Execute()
@@ -93,14 +97,15 @@ namespace DoFactory.GangOfFour.Command.NETOptimized
                 case '-': return '+';
                 case '*': return '/';
                 case '/': return '*';
-                default: throw new
-                  ArgumentException("@operator");
+                default:
+                    throw new
+                        ArgumentException("@operator");
             }
         }
     }
 
     /// <summary>
-    /// The 'Receiver' class
+    ///     The 'Receiver' class
     /// </summary>
     class Calculator
     {
@@ -111,10 +116,18 @@ namespace DoFactory.GangOfFour.Command.NETOptimized
         {
             switch (@operator)
             {
-                case '+': current += operand; break;
-                case '-': current -= operand; break;
-                case '*': current *= operand; break;
-                case '/': current /= operand; break;
+                case '+':
+                    current += operand;
+                    break;
+                case '-':
+                    current -= operand;
+                    break;
+                case '*':
+                    current *= operand;
+                    break;
+                case '/':
+                    current /= operand;
+                    break;
             }
             Console.WriteLine(
                 "Current value = {0,3} (following {1} {2})",
@@ -123,7 +136,7 @@ namespace DoFactory.GangOfFour.Command.NETOptimized
     }
 
     /// <summary>
-    /// The 'Invoker' class
+    ///     The 'Invoker' class
     /// </summary>
     class User
     {

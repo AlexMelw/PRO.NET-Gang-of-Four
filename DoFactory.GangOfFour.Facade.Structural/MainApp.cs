@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Facade.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Structural
-    /// Facade Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Facade Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         public static void Main()
         {
@@ -24,7 +24,7 @@ namespace DoFactory.GangOfFour.Facade.Structural
     }
 
     /// <summary>
-    /// The 'Subsystem ClassA' class
+    ///     The 'Subsystem ClassA' class
     /// </summary>
     class SubSystemOne
     {
@@ -35,7 +35,7 @@ namespace DoFactory.GangOfFour.Facade.Structural
     }
 
     /// <summary>
-    /// The 'Subsystem ClassB' class
+    ///     The 'Subsystem ClassB' class
     /// </summary>
     class SubSystemTwo
     {
@@ -46,7 +46,7 @@ namespace DoFactory.GangOfFour.Facade.Structural
     }
 
     /// <summary>
-    /// The 'Subsystem ClassC' class
+    ///     The 'Subsystem ClassC' class
     /// </summary>
     class SubSystemThree
     {
@@ -57,7 +57,7 @@ namespace DoFactory.GangOfFour.Facade.Structural
     }
 
     /// <summary>
-    /// The 'Subsystem ClassD' class
+    ///     The 'Subsystem ClassD' class
     /// </summary>
     class SubSystemFour
     {
@@ -68,7 +68,7 @@ namespace DoFactory.GangOfFour.Facade.Structural
     }
 
     /// <summary>
-    /// The 'Facade' class
+    ///     The 'Facade' class
     /// </summary>
     class Facade
     {
@@ -77,6 +77,8 @@ namespace DoFactory.GangOfFour.Facade.Structural
         SubSystemThree three;
         SubSystemFour four;
 
+        #region CONSTRUCTORS
+
         public Facade()
         {
             one = new SubSystemOne();
@@ -84,6 +86,8 @@ namespace DoFactory.GangOfFour.Facade.Structural
             three = new SubSystemThree();
             four = new SubSystemFour();
         }
+
+        #endregion
 
         public void MethodA()
         {

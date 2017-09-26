@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Strategy.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Structural
-    /// Strategy Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Strategy Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -31,7 +31,7 @@ namespace DoFactory.GangOfFour.Strategy.Structural
     }
 
     /// <summary>
-    /// The 'Strategy' abstract class
+    ///     The 'Strategy' abstract class
     /// </summary>
     abstract class Strategy
     {
@@ -39,7 +39,7 @@ namespace DoFactory.GangOfFour.Strategy.Structural
     }
 
     /// <summary>
-    /// A 'ConcreteStrategy' class
+    ///     A 'ConcreteStrategy' class
     /// </summary>
     class ConcreteStrategyA : Strategy
     {
@@ -51,7 +51,7 @@ namespace DoFactory.GangOfFour.Strategy.Structural
     }
 
     /// <summary>
-    /// A 'ConcreteStrategy' class
+    ///     A 'ConcreteStrategy' class
     /// </summary>
     class ConcreteStrategyB : Strategy
     {
@@ -63,7 +63,7 @@ namespace DoFactory.GangOfFour.Strategy.Structural
     }
 
     /// <summary>
-    /// A 'ConcreteStrategy' class
+    ///     A 'ConcreteStrategy' class
     /// </summary>
     class ConcreteStrategyC : Strategy
     {
@@ -75,17 +75,21 @@ namespace DoFactory.GangOfFour.Strategy.Structural
     }
 
     /// <summary>
-    /// The 'Context' class
+    ///     The 'Context' class
     /// </summary>
     class Context
     {
         Strategy strategy;
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Context(Strategy strategy)
         {
             this.strategy = strategy;
         }
+
+        #endregion
 
         public void ContextInterface()
         {

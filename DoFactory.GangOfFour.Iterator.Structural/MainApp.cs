@@ -1,16 +1,16 @@
-using System;
-using System.Collections;
-
 namespace DoFactory.GangOfFour.Iterator.Structural
 {
+    using System;
+    using System.Collections;
+
     /// <summary>
-    /// MainApp startup class for Structural 
-    /// Iterator Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Iterator Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -38,7 +38,7 @@ namespace DoFactory.GangOfFour.Iterator.Structural
     }
 
     /// <summary>
-    /// The 'Aggregate' abstract class
+    ///     The 'Aggregate' abstract class
     /// </summary>
     abstract class Aggregate
     {
@@ -46,16 +46,11 @@ namespace DoFactory.GangOfFour.Iterator.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteAggregate' class
+    ///     The 'ConcreteAggregate' class
     /// </summary>
     class ConcreteAggregate : Aggregate
     {
         ArrayList items = new ArrayList();
-
-        public override Iterator CreateIterator()
-        {
-            return new ConcreteIterator(this);
-        }
 
         // Gets item count
         public int Count
@@ -69,10 +64,15 @@ namespace DoFactory.GangOfFour.Iterator.Structural
             get { return items[index]; }
             set { items.Insert(index, value); }
         }
+
+        public override Iterator CreateIterator()
+        {
+            return new ConcreteIterator(this);
+        }
     }
 
     /// <summary>
-    /// The 'Iterator' abstract class
+    ///     The 'Iterator' abstract class
     /// </summary>
     abstract class Iterator
     {
@@ -83,18 +83,22 @@ namespace DoFactory.GangOfFour.Iterator.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteIterator' class
+    ///     The 'ConcreteIterator' class
     /// </summary>
     class ConcreteIterator : Iterator
     {
         ConcreteAggregate aggregate;
         int current = 0;
 
+        #region CONSTRUCTORS
+
         // Constructor
         public ConcreteIterator(ConcreteAggregate aggregate)
         {
             this.aggregate = aggregate;
         }
+
+        #endregion
 
         // Gets first iteration item
         public override object First()

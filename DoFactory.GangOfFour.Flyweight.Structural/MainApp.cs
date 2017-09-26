@@ -1,16 +1,16 @@
-using System;
-using System.Collections;
-
 namespace DoFactory.GangOfFour.Flyweight.Structural
 {
+    using System;
+    using System.Collections;
+
     /// <summary>
-    /// MainApp startup class for Structural 
-    /// Flyweight Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Flyweight Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -40,11 +40,13 @@ namespace DoFactory.GangOfFour.Flyweight.Structural
     }
 
     /// <summary>
-    /// The 'FlyweightFactory' class
+    ///     The 'FlyweightFactory' class
     /// </summary>
     class FlyweightFactory
     {
         private Hashtable flyweights = new Hashtable();
+
+        #region CONSTRUCTORS
 
         // Constructor
         public FlyweightFactory()
@@ -54,14 +56,16 @@ namespace DoFactory.GangOfFour.Flyweight.Structural
             flyweights.Add("Z", new ConcreteFlyweight());
         }
 
+        #endregion
+
         public Flyweight GetFlyweight(string key)
         {
-            return ((Flyweight)flyweights[key]);
+            return (Flyweight) flyweights[key];
         }
     }
 
     /// <summary>
-    /// The 'Flyweight' abstract class
+    ///     The 'Flyweight' abstract class
     /// </summary>
     abstract class Flyweight
     {
@@ -69,7 +73,7 @@ namespace DoFactory.GangOfFour.Flyweight.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteFlyweight' class
+    ///     The 'ConcreteFlyweight' class
     /// </summary>
     class ConcreteFlyweight : Flyweight
     {
@@ -80,14 +84,14 @@ namespace DoFactory.GangOfFour.Flyweight.Structural
     }
 
     /// <summary>
-    /// The 'UnsharedConcreteFlyweight' class
+    ///     The 'UnsharedConcreteFlyweight' class
     /// </summary>
     class UnsharedConcreteFlyweight : Flyweight
     {
         public override void Operation(int extrinsicstate)
         {
             Console.WriteLine("UnsharedConcreteFlyweight: " +
-                extrinsicstate);
+                              extrinsicstate);
         }
     }
 }

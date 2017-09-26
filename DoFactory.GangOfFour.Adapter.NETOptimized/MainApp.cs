@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Adapter.NETOptimized
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for the .NET optimized 
-    /// Adapter Design Pattern.
+    ///     MainApp startup class for the .NET optimized
+    ///     Adapter Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -33,7 +33,7 @@ namespace DoFactory.GangOfFour.Adapter.NETOptimized
     }
 
     /// <summary>
-    /// The 'Target' class
+    ///     The 'Target' class
     /// </summary>
     class Compound
     {
@@ -50,20 +50,24 @@ namespace DoFactory.GangOfFour.Adapter.NETOptimized
     }
 
     /// <summary>
-    /// The 'Adapter' class
+    ///     The 'Adapter' class
     /// </summary>
     class RichCompound : Compound
     {
         ChemicalDatabank bank;
 
+        #region CONSTRUCTORS
+
         // Constructor
         public RichCompound(Chemical chemical)
         {
             Chemical = chemical;
-           
+
             // The Adaptee
             bank = new ChemicalDatabank();
         }
+
+        #endregion
 
         public override void Display()
         {
@@ -82,7 +86,7 @@ namespace DoFactory.GangOfFour.Adapter.NETOptimized
     }
 
     /// <summary>
-    /// The 'Adaptee' class
+    ///     The 'Adaptee' class
     /// </summary>
     class ChemicalDatabank
     {
@@ -101,7 +105,7 @@ namespace DoFactory.GangOfFour.Adapter.NETOptimized
                 }
             }
             // Boiling Point
-            else 
+            else
             {
                 switch (compound)
                 {
@@ -117,7 +121,7 @@ namespace DoFactory.GangOfFour.Adapter.NETOptimized
         {
             switch (compound)
             {
-                case Chemical.Water: return "H20"; 
+                case Chemical.Water: return "H20";
                 case Chemical.Benzene: return "C6H6";
                 case Chemical.Ethanol: return "C2H5OH";
                 default: return "";
@@ -136,9 +140,9 @@ namespace DoFactory.GangOfFour.Adapter.NETOptimized
         }
     }
 
-    
+
     /// <summary>
-    /// Chemical enumeration
+    ///     Chemical enumeration
     /// </summary>
     public enum Chemical
     {
@@ -148,7 +152,7 @@ namespace DoFactory.GangOfFour.Adapter.NETOptimized
     }
 
     /// <summary>
-    /// State enumeration
+    ///     State enumeration
     /// </summary>
     public enum State
     {

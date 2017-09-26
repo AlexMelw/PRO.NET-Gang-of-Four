@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Singleton.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Structural
-    /// Singleton Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Singleton Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -29,16 +29,18 @@ namespace DoFactory.GangOfFour.Singleton.Structural
     }
 
     /// <summary>
-    /// The 'Singleton' class
+    ///     The 'Singleton' class
     /// </summary>
     class Singleton
     {
         static Singleton instance;
 
+        #region CONSTRUCTORS
+
         // Constructor is 'protected'
-        protected Singleton()
-        {
-        }
+        protected Singleton() { }
+
+        #endregion
 
         public static Singleton Instance()
         {

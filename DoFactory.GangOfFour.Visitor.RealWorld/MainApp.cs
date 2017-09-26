@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Visitor.RealWorld
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Visitor Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Visitor Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -30,7 +30,7 @@ namespace DoFactory.GangOfFour.Visitor.RealWorld
     }
 
     /// <summary>
-    /// The 'Visitor' interface
+    ///     The 'Visitor' interface
     /// </summary>
     interface IVisitor
     {
@@ -38,7 +38,7 @@ namespace DoFactory.GangOfFour.Visitor.RealWorld
     }
 
     /// <summary>
-    /// A 'ConcreteVisitor' class
+    ///     A 'ConcreteVisitor' class
     /// </summary>
     class IncomeVisitor : IVisitor
     {
@@ -55,7 +55,7 @@ namespace DoFactory.GangOfFour.Visitor.RealWorld
     }
 
     /// <summary>
-    /// A 'ConcreteVisitor' class
+    ///     A 'ConcreteVisitor' class
     /// </summary>
     class VacationVisitor : IVisitor
     {
@@ -71,7 +71,7 @@ namespace DoFactory.GangOfFour.Visitor.RealWorld
     }
 
     /// <summary>
-    /// The 'Element' abstract class
+    ///     The 'Element' abstract class
     /// </summary>
     abstract class Element
     {
@@ -79,22 +79,13 @@ namespace DoFactory.GangOfFour.Visitor.RealWorld
     }
 
     /// <summary>
-    /// The 'ConcreteElement' class
+    ///     The 'ConcreteElement' class
     /// </summary>
     class Employee : Element
     {
         string name;
         double income;
         int vacationDays;
-
-        // Constructor
-        public Employee(string name, double income,
-            int vacationDays)
-        {
-            this.name = name;
-            this.income = income;
-            this.vacationDays = vacationDays;
-        }
 
         // Gets or sets the name
         public string Name
@@ -117,6 +108,19 @@ namespace DoFactory.GangOfFour.Visitor.RealWorld
             set { vacationDays = value; }
         }
 
+        #region CONSTRUCTORS
+
+        // Constructor
+        public Employee(string name, double income,
+            int vacationDays)
+        {
+            this.name = name;
+            this.income = income;
+            this.vacationDays = vacationDays;
+        }
+
+        #endregion
+
         public override void Accept(IVisitor visitor)
         {
             visitor.Visit(this);
@@ -124,7 +128,7 @@ namespace DoFactory.GangOfFour.Visitor.RealWorld
     }
 
     /// <summary>
-    /// The 'ObjectStructure' class
+    ///     The 'ObjectStructure' class
     /// </summary>
     class Employees
     {
@@ -154,28 +158,34 @@ namespace DoFactory.GangOfFour.Visitor.RealWorld
 
     class Clerk : Employee
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public Clerk()
-            : base("Hank", 25000.0, 14)
-        {
-        }
+            : base("Hank", 25000.0, 14) { }
+
+        #endregion
     }
 
     class Director : Employee
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public Director()
-            : base("Elly", 35000.0, 16)
-        {
-        }
+            : base("Elly", 35000.0, 16) { }
+
+        #endregion
     }
 
     class President : Employee
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public President()
-            : base("Dick", 45000.0, 21)
-        {
-        }
+            : base("Dick", 45000.0, 21) { }
+
+        #endregion
     }
 }

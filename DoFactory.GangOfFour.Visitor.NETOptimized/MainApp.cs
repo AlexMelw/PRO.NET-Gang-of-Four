@@ -1,17 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-
 namespace DoFactory.GangOfFour.Visitor.NETOptimized
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Visitor Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Visitor Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -31,7 +30,7 @@ namespace DoFactory.GangOfFour.Visitor.NETOptimized
     }
 
     /// <summary>
-    /// The 'Visitor' abstract class
+    ///     The 'Visitor' abstract class
     /// </summary>
     public abstract class Visitor
     {
@@ -41,7 +40,7 @@ namespace DoFactory.GangOfFour.Visitor.NETOptimized
         public void ReflectiveVisit(IElement element)
         {
             var types = new Type[] { element.GetType() };
-            var mi = this.GetType().GetMethod("Visit", types);
+            var mi = GetType().GetMethod("Visit", types);
 
             if (mi != null)
             {
@@ -51,7 +50,7 @@ namespace DoFactory.GangOfFour.Visitor.NETOptimized
     }
 
     /// <summary>
-    /// A 'ConcreteVisitor' class
+    ///     A 'ConcreteVisitor' class
     /// </summary>
     class IncomeVisitor : Visitor
     {
@@ -80,7 +79,7 @@ namespace DoFactory.GangOfFour.Visitor.NETOptimized
     }
 
     /// <summary>
-    /// A 'ConcreteVisitor' class
+    ///     A 'ConcreteVisitor' class
     /// </summary>
     class VacationVisitor : Visitor
     {
@@ -103,7 +102,7 @@ namespace DoFactory.GangOfFour.Visitor.NETOptimized
     }
 
     /// <summary>
-    /// The 'Element' interface
+    ///     The 'Element' interface
     /// </summary>
     public interface IElement
     {
@@ -111,19 +110,10 @@ namespace DoFactory.GangOfFour.Visitor.NETOptimized
     }
 
     /// <summary>
-    /// The 'ConcreteElement' class
+    ///     The 'ConcreteElement' class
     /// </summary>
     class Employee : IElement
     {
-        // Constructor
-        public Employee(string name, double income,
-            int vacationDays)
-        {
-            this.Name = name;
-            this.Income = income;
-            this.VacationDays = vacationDays;
-        }
-
         // Gets or sets name
         public string Name { get; set; }
 
@@ -133,6 +123,19 @@ namespace DoFactory.GangOfFour.Visitor.NETOptimized
         // Gets or sets vacation days
         public int VacationDays { get; set; }
 
+        #region CONSTRUCTORS
+
+        // Constructor
+        public Employee(string name, double income,
+            int vacationDays)
+        {
+            Name = name;
+            Income = income;
+            VacationDays = vacationDays;
+        }
+
+        #endregion
+
         public virtual void Accept(Visitor visitor)
         {
             visitor.ReflectiveVisit(this);
@@ -140,7 +143,7 @@ namespace DoFactory.GangOfFour.Visitor.NETOptimized
     }
 
     /// <summary>
-    /// The 'ObjectStructure' class
+    ///     The 'ObjectStructure' class
     /// </summary>
     class Employees : List<Employee>
     {
@@ -157,8 +160,8 @@ namespace DoFactory.GangOfFour.Visitor.NETOptimized
         public void Accept(Visitor visitor)
         {
             // Iterate over all employees and accept visitor
-            this.ForEach(employee => employee.Accept(visitor));
-            
+            ForEach(employee => employee.Accept(visitor));
+
             Console.WriteLine();
         }
     }
@@ -167,28 +170,34 @@ namespace DoFactory.GangOfFour.Visitor.NETOptimized
 
     class Clerk : Employee
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public Clerk()
-            : base("Hank", 25000.0, 14)
-        {
-        }
+            : base("Hank", 25000.0, 14) { }
+
+        #endregion
     }
 
     class Director : Employee
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public Director()
-            : base("Elly", 35000.0, 16)
-        {
-        }
+            : base("Elly", 35000.0, 16) { }
+
+        #endregion
     }
 
     class President : Employee
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public President()
-            : base("Dick", 45000.0, 21)
-        {
-        }
+            : base("Dick", 45000.0, 21) { }
+
+        #endregion
     }
 }

@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Mediator.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Structural 
-    /// Mediator Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Mediator Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -30,7 +30,7 @@ namespace DoFactory.GangOfFour.Mediator.Structural
     }
 
     /// <summary>
-    /// The 'Mediator' abstract class
+    ///     The 'Mediator' abstract class
     /// </summary>
     abstract class Mediator
     {
@@ -39,7 +39,7 @@ namespace DoFactory.GangOfFour.Mediator.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteMediator' class
+    ///     The 'ConcreteMediator' class
     /// </summary>
     class ConcreteMediator : Mediator
     {
@@ -70,29 +70,35 @@ namespace DoFactory.GangOfFour.Mediator.Structural
     }
 
     /// <summary>
-    /// The 'Colleague' abstract class
+    ///     The 'Colleague' abstract class
     /// </summary>
     abstract class Colleague
     {
         protected Mediator mediator;
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Colleague(Mediator mediator)
         {
             this.mediator = mediator;
         }
+
+        #endregion
     }
 
     /// <summary>
-    /// A 'ConcreteColleague' class
+    ///     A 'ConcreteColleague' class
     /// </summary>
     class ConcreteColleague1 : Colleague
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public ConcreteColleague1(Mediator mediator)
-            : base(mediator)
-        {
-        }
+            : base(mediator) { }
+
+        #endregion
 
         public void Send(string message)
         {
@@ -102,20 +108,22 @@ namespace DoFactory.GangOfFour.Mediator.Structural
         public void Notify(string message)
         {
             Console.WriteLine("Colleague1 gets message: "
-                + message);
+                              + message);
         }
     }
 
     /// <summary>
-    /// A 'ConcreteColleague' class
+    ///     A 'ConcreteColleague' class
     /// </summary>
     class ConcreteColleague2 : Colleague
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public ConcreteColleague2(Mediator mediator)
-            : base(mediator)
-        {
-        }
+            : base(mediator) { }
+
+        #endregion
 
         public void Send(string message)
         {
@@ -125,7 +133,7 @@ namespace DoFactory.GangOfFour.Mediator.Structural
         public void Notify(string message)
         {
             Console.WriteLine("Colleague2 gets message: "
-                + message);
+                              + message);
         }
     }
 }

@@ -1,17 +1,17 @@
-using System;
-using System.Data;
-using System.Data.OleDb;
-
 namespace DoFactory.GangOfFour.Template.NETOptimized
 {
+    using System;
+    using System.Data;
+    using System.Data.OleDb;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Template Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Template Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -27,7 +27,7 @@ namespace DoFactory.GangOfFour.Template.NETOptimized
     }
 
     /// <summary>
-    /// The 'AbstractClass' abstract class
+    ///     The 'AbstractClass' abstract class
     /// </summary>
     abstract class DataAccessObject
     {
@@ -45,7 +45,7 @@ namespace DoFactory.GangOfFour.Template.NETOptimized
         public abstract void Select();
         public abstract void Process();
 
-        virtual public void Disconnect()
+        public virtual void Disconnect()
         {
             connectionString = "";
         }
@@ -61,7 +61,7 @@ namespace DoFactory.GangOfFour.Template.NETOptimized
     }
 
     /// <summary>
-    /// A 'ConcreteClass' class
+    ///     A 'ConcreteClass' class
     /// </summary>
     class Categories : DataAccessObject
     {
@@ -88,7 +88,7 @@ namespace DoFactory.GangOfFour.Template.NETOptimized
     }
 
     /// <summary>
-    /// A 'ConcreteClass' class
+    ///     A 'ConcreteClass' class
     /// </summary>
     class Products : DataAccessObject
     {

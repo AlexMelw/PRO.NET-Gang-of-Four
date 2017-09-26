@@ -1,16 +1,16 @@
-using System;
-using System.Collections;
-
 namespace DoFactory.GangOfFour.Iterator.RealWorld
 {
+    using System;
+    using System.Collections;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Iterator Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Iterator Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -35,7 +35,8 @@ namespace DoFactory.GangOfFour.Iterator.RealWorld
             Console.WriteLine("Iterating over collection:");
 
             for (Item item = iterator.First();
-                !iterator.IsDone; item = iterator.Next())
+                !iterator.IsDone;
+                item = iterator.Next())
             {
                 Console.WriteLine(item.Name);
             }
@@ -46,11 +47,19 @@ namespace DoFactory.GangOfFour.Iterator.RealWorld
     }
 
     /// <summary>
-    /// A collection item
+    ///     A collection item
     /// </summary>
     class Item
     {
         string name;
+
+        // Gets name
+        public string Name
+        {
+            get { return name; }
+        }
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Item(string name)
@@ -58,15 +67,11 @@ namespace DoFactory.GangOfFour.Iterator.RealWorld
             this.name = name;
         }
 
-        // Gets name
-        public string Name
-        {
-            get { return name; }
-        }
+        #endregion
     }
 
     /// <summary>
-    /// The 'Aggregate' interface
+    ///     The 'Aggregate' interface
     /// </summary>
     interface IAbstractCollection
     {
@@ -74,16 +79,11 @@ namespace DoFactory.GangOfFour.Iterator.RealWorld
     }
 
     /// <summary>
-    /// The 'ConcreteAggregate' class
+    ///     The 'ConcreteAggregate' class
     /// </summary>
     class Collection : IAbstractCollection
     {
         ArrayList items = new ArrayList();
-
-        public Iterator CreateIterator()
-        {
-            return new Iterator(this);
-        }
 
         // Gets item count
         public int Count
@@ -97,21 +97,26 @@ namespace DoFactory.GangOfFour.Iterator.RealWorld
             get { return items[index]; }
             set { items.Add(value); }
         }
+
+        public Iterator CreateIterator()
+        {
+            return new Iterator(this);
+        }
     }
 
     /// <summary>
-    /// The 'Iterator' interface
+    ///     The 'Iterator' interface
     /// </summary>
     interface IAbstractIterator
     {
-        Item First();
-        Item Next();
         bool IsDone { get; }
         Item CurrentItem { get; }
+        Item First();
+        Item Next();
     }
 
     /// <summary>
-    /// The 'ConcreteIterator' class
+    ///     The 'ConcreteIterator' class
     /// </summary>
     class Iterator : IAbstractIterator
     {
@@ -119,11 +124,22 @@ namespace DoFactory.GangOfFour.Iterator.RealWorld
         int current = 0;
         int step = 1;
 
+        // Gets or sets stepsize
+        public int Step
+        {
+            get { return step; }
+            set { step = value; }
+        }
+
+        #region CONSTRUCTORS
+
         // Constructor
         public Iterator(Collection collection)
         {
             this.collection = collection;
         }
+
+        #endregion
 
         // Gets first item
         public Item First()
@@ -140,13 +156,6 @@ namespace DoFactory.GangOfFour.Iterator.RealWorld
                 return collection[current] as Item;
             else
                 return null;
-        }
-
-        // Gets or sets stepsize
-        public int Step
-        {
-            get { return step; }
-            set { step = value; }
         }
 
         // Gets current iterator item

@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Chain.NETOptimized
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Chain of Responsibility Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Chain of Responsibility Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -43,21 +43,28 @@ namespace DoFactory.GangOfFour.Chain.NETOptimized
     }
 
     /// <summary>
-    /// The 'Handler' abstract class
+    ///     The 'Handler' abstract class
     /// </summary>
     abstract class Approver
     {
         // Purchase event 
         public EventHandler<PurchaseEventArgs> Purchase;
 
-        // Purchase event handler
-        public abstract void PurchaseHandler(object sender, PurchaseEventArgs e);
+        // Sets or gets the next approver
+        public Approver Successor { get; set; }
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Approver()
         {
             Purchase += PurchaseHandler;
         }
+
+        #endregion
+
+        // Purchase event handler
+        public abstract void PurchaseHandler(object sender, PurchaseEventArgs e);
 
         public void ProcessRequest(Purchase purchase)
         {
@@ -72,13 +79,10 @@ namespace DoFactory.GangOfFour.Chain.NETOptimized
                 Purchase(this, e);
             }
         }
-
-        // Sets or gets the next approver
-        public Approver Successor { get; set; }
     }
 
     /// <summary>
-    /// The 'ConcreteHandler' class
+    ///     The 'ConcreteHandler' class
     /// </summary>
     class Director : Approver
     {
@@ -87,7 +91,7 @@ namespace DoFactory.GangOfFour.Chain.NETOptimized
             if (e.Purchase.Amount < 10000.0)
             {
                 Console.WriteLine("{0} approved request# {1}",
-                    this.GetType().Name, e.Purchase.Number);
+                    GetType().Name, e.Purchase.Number);
             }
             else if (Successor != null)
             {
@@ -97,7 +101,7 @@ namespace DoFactory.GangOfFour.Chain.NETOptimized
     }
 
     /// <summary>
-    /// The 'ConcreteHandler' class
+    ///     The 'ConcreteHandler' class
     /// </summary>
     class VicePresident : Approver
     {
@@ -106,7 +110,7 @@ namespace DoFactory.GangOfFour.Chain.NETOptimized
             if (e.Purchase.Amount < 25000.0)
             {
                 Console.WriteLine("{0} approved request# {1}",
-                    this.GetType().Name, e.Purchase.Number);
+                    GetType().Name, e.Purchase.Number);
             }
             else if (Successor != null)
             {
@@ -116,7 +120,7 @@ namespace DoFactory.GangOfFour.Chain.NETOptimized
     }
 
     /// <summary>
-    /// The 'ConcreteHandler' clas
+    ///     The 'ConcreteHandler' clas
     /// </summary>
     class President : Approver
     {
@@ -141,7 +145,7 @@ namespace DoFactory.GangOfFour.Chain.NETOptimized
     }
 
     /// <summary>
-    /// Class that holds request details
+    ///     Class that holds request details
     /// </summary>
     class Purchase
     {

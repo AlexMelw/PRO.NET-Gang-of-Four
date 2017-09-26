@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Memento.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Structural 
-    /// Memento Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Memento Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -32,7 +32,7 @@ namespace DoFactory.GangOfFour.Memento.Structural
     }
 
     /// <summary>
-    /// The 'Originator' class
+    ///     The 'Originator' class
     /// </summary>
     class Originator
     {
@@ -42,8 +42,7 @@ namespace DoFactory.GangOfFour.Memento.Structural
         public string State
         {
             get { return state; }
-            set
-            {
+            set {
                 state = value;
                 Console.WriteLine("State = " + state);
             }
@@ -52,7 +51,7 @@ namespace DoFactory.GangOfFour.Memento.Structural
         // Creates memento 
         public Memento CreateMemento()
         {
-            return (new Memento(state));
+            return new Memento(state);
         }
 
         // Restores original state
@@ -64,11 +63,19 @@ namespace DoFactory.GangOfFour.Memento.Structural
     }
 
     /// <summary>
-    /// The 'Memento' class
+    ///     The 'Memento' class
     /// </summary>
     class Memento
     {
         string state;
+
+        // Gets or sets state
+        public string State
+        {
+            get { return state; }
+        }
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Memento(string state)
@@ -76,15 +83,11 @@ namespace DoFactory.GangOfFour.Memento.Structural
             this.state = state;
         }
 
-        // Gets or sets state
-        public string State
-        {
-            get { return state; }
-        }
+        #endregion
     }
 
     /// <summary>
-    /// The 'Caretaker' class
+    ///     The 'Caretaker' class
     /// </summary>
     class Caretaker
     {

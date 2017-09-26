@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Adapter.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Structural
-    /// Adapter Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Adapter Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -23,7 +23,7 @@ namespace DoFactory.GangOfFour.Adapter.Structural
     }
 
     /// <summary>
-    /// The 'Target' class
+    ///     The 'Target' class
     /// </summary>
     class Target
     {
@@ -34,7 +34,7 @@ namespace DoFactory.GangOfFour.Adapter.Structural
     }
 
     /// <summary>
-    /// The 'Adapter' class
+    ///     The 'Adapter' class
     /// </summary>
     class Adapter : Target
     {
@@ -49,7 +49,7 @@ namespace DoFactory.GangOfFour.Adapter.Structural
     }
 
     /// <summary>
-    /// The 'Adaptee' class
+    ///     The 'Adaptee' class
     /// </summary>
     class Adaptee
     {

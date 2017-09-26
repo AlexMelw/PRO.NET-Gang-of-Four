@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Command.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Structural 
-    /// Command Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Command Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -28,11 +28,13 @@ namespace DoFactory.GangOfFour.Command.Structural
     }
 
     /// <summary>
-    /// The 'Command' abstract class
+    ///     The 'Command' abstract class
     /// </summary>
     abstract class Command
     {
         protected Receiver receiver;
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Command(Receiver receiver)
@@ -40,19 +42,23 @@ namespace DoFactory.GangOfFour.Command.Structural
             this.receiver = receiver;
         }
 
+        #endregion
+
         public abstract void Execute();
     }
 
     /// <summary>
-    /// The 'ConcreteCommand' class
+    ///     The 'ConcreteCommand' class
     /// </summary>
     class ConcreteCommand : Command
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public ConcreteCommand(Receiver receiver) :
-            base(receiver)
-        {
-        }
+            base(receiver) { }
+
+        #endregion
 
         public override void Execute()
         {
@@ -61,7 +67,7 @@ namespace DoFactory.GangOfFour.Command.Structural
     }
 
     /// <summary>
-    /// The 'Receiver' class
+    ///     The 'Receiver' class
     /// </summary>
     class Receiver
     {
@@ -72,7 +78,7 @@ namespace DoFactory.GangOfFour.Command.Structural
     }
 
     /// <summary>
-    /// The 'Invoker' class
+    ///     The 'Invoker' class
     /// </summary>
     class Invoker
     {

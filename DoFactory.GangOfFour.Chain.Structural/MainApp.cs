@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Chain.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Structural
-    /// Chain of Responsibility Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Chain of Responsibility Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -34,7 +34,7 @@ namespace DoFactory.GangOfFour.Chain.Structural
     }
 
     /// <summary>
-    /// The 'Handler' abstract class
+    ///     The 'Handler' abstract class
     /// </summary>
     abstract class Handler
     {
@@ -49,7 +49,7 @@ namespace DoFactory.GangOfFour.Chain.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteHandler1' class
+    ///     The 'ConcreteHandler1' class
     /// </summary>
     class ConcreteHandler1 : Handler
     {
@@ -58,7 +58,7 @@ namespace DoFactory.GangOfFour.Chain.Structural
             if (request >= 0 && request < 10)
             {
                 Console.WriteLine("{0} handled request {1}",
-                    this.GetType().Name, request);
+                    GetType().Name, request);
             }
             else if (successor != null)
             {
@@ -68,7 +68,7 @@ namespace DoFactory.GangOfFour.Chain.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteHandler2' class
+    ///     The 'ConcreteHandler2' class
     /// </summary>
     class ConcreteHandler2 : Handler
     {
@@ -77,7 +77,7 @@ namespace DoFactory.GangOfFour.Chain.Structural
             if (request >= 10 && request < 20)
             {
                 Console.WriteLine("{0} handled request {1}",
-                    this.GetType().Name, request);
+                    GetType().Name, request);
             }
             else if (successor != null)
             {
@@ -87,7 +87,7 @@ namespace DoFactory.GangOfFour.Chain.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteHandler3' class
+    ///     The 'ConcreteHandler3' class
     /// </summary>
     class ConcreteHandler3 : Handler
     {
@@ -96,7 +96,7 @@ namespace DoFactory.GangOfFour.Chain.Structural
             if (request >= 20 && request < 30)
             {
                 Console.WriteLine("{0} handled request {1}",
-                    this.GetType().Name, request);
+                    GetType().Name, request);
             }
             else if (successor != null)
             {

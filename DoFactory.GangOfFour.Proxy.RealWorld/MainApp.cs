@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Proxy.RealWorld
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Proxy Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Proxy Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -28,7 +28,7 @@ namespace DoFactory.GangOfFour.Proxy.RealWorld
     }
 
     /// <summary>
-    /// The 'Subject interface
+    ///     The 'Subject interface
     /// </summary>
     public interface IMath
     {
@@ -39,18 +39,33 @@ namespace DoFactory.GangOfFour.Proxy.RealWorld
     }
 
     /// <summary>
-    /// The 'RealSubject' class
+    ///     The 'RealSubject' class
     /// </summary>
     class Math : IMath
     {
-        public double Add(double x, double y) { return x + y; }
-        public double Sub(double x, double y) { return x - y; }
-        public double Mul(double x, double y) { return x * y; }
-        public double Div(double x, double y) { return x / y; }
+        public double Add(double x, double y)
+        {
+            return x + y;
+        }
+
+        public double Sub(double x, double y)
+        {
+            return x - y;
+        }
+
+        public double Mul(double x, double y)
+        {
+            return x * y;
+        }
+
+        public double Div(double x, double y)
+        {
+            return x / y;
+        }
     }
 
     /// <summary>
-    /// The 'Proxy Object' class
+    ///     The 'Proxy Object' class
     /// </summary>
     class MathProxy : IMath
     {
@@ -60,14 +75,17 @@ namespace DoFactory.GangOfFour.Proxy.RealWorld
         {
             return math.Add(x, y);
         }
+
         public double Sub(double x, double y)
         {
             return math.Sub(x, y);
         }
+
         public double Mul(double x, double y)
         {
             return math.Mul(x, y);
         }
+
         public double Div(double x, double y)
         {
             return math.Div(x, y);

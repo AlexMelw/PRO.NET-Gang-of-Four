@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Bridge.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Structural
-    /// Bridge Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Bridge Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -29,7 +29,7 @@ namespace DoFactory.GangOfFour.Bridge.Structural
     }
 
     /// <summary>
-    /// The 'Abstraction' class
+    ///     The 'Abstraction' class
     /// </summary>
     class Abstraction
     {
@@ -48,7 +48,7 @@ namespace DoFactory.GangOfFour.Bridge.Structural
     }
 
     /// <summary>
-    /// The 'Implementor' abstract class
+    ///     The 'Implementor' abstract class
     /// </summary>
     abstract class Implementor
     {
@@ -56,7 +56,7 @@ namespace DoFactory.GangOfFour.Bridge.Structural
     }
 
     /// <summary>
-    /// The 'RefinedAbstraction' class
+    ///     The 'RefinedAbstraction' class
     /// </summary>
     class RefinedAbstraction : Abstraction
     {
@@ -67,7 +67,7 @@ namespace DoFactory.GangOfFour.Bridge.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteImplementorA' class
+    ///     The 'ConcreteImplementorA' class
     /// </summary>
     class ConcreteImplementorA : Implementor
     {
@@ -78,7 +78,7 @@ namespace DoFactory.GangOfFour.Bridge.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteImplementorB' class
+    ///     The 'ConcreteImplementorB' class
     /// </summary>
     class ConcreteImplementorB : Implementor
     {

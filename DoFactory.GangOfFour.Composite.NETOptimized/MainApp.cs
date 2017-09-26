@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Composite.NETOptimized
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Composite Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Composite Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -39,12 +39,21 @@ namespace DoFactory.GangOfFour.Composite.NETOptimized
     }
 
     /// <summary>
-    /// Generic tree node class
+    ///     Generic tree node class
     /// </summary>
     /// <typeparam name="T">Node type</typeparam>
     class TreeNode<T> where T : IComparable<T>
     {
         List<TreeNode<T>> children = new List<TreeNode<T>>();
+
+        // Gets or sets the node
+        public T Node { get; set; }
+
+        // Gets treenode children
+        public List<TreeNode<T>> Children
+        {
+            get { return children; }
+        }
 
         // Add a child tree node
         public TreeNode<T> Add(T child)
@@ -67,19 +76,10 @@ namespace DoFactory.GangOfFour.Composite.NETOptimized
             }
         }
 
-        // Gets or sets the node
-        public T Node { get; set; }
-
-        // Gets treenode children
-        public List<TreeNode<T>> Children
-        {
-            get { return children; }
-        }
-
         // Recursively displays node and its children 
         public static void Display(TreeNode<T> node, int indentation)
         {
-            string line = new String('-', indentation);
+            string line = new string('-', indentation);
             Console.WriteLine(line + " " + node.Node);
 
             node.Children.ForEach(n => Display(n, indentation + 1));
@@ -87,15 +87,16 @@ namespace DoFactory.GangOfFour.Composite.NETOptimized
     }
 
     /// <summary>
-    /// Shape class
-    /// <remarks>
-    /// Implements generic IComparable interface
-    /// </remarks>
+    ///     Shape class
+    ///     <remarks>
+    ///         Implements generic IComparable interface
+    ///     </remarks>
     /// </summary>
-
     class Shape : IComparable<Shape>
     {
         string name;
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Shape(string name)
@@ -103,15 +104,17 @@ namespace DoFactory.GangOfFour.Composite.NETOptimized
             this.name = name;
         }
 
-        public override string ToString()
-        {
-            return name;
-        }
+        #endregion
 
         // IComparable<Shape> Member
         public int CompareTo(Shape other)
         {
-            return (this == other) ? 0 : -1;
+            return this == other ? 0 : -1;
+        }
+
+        public override string ToString()
+        {
+            return name;
         }
     }
 }

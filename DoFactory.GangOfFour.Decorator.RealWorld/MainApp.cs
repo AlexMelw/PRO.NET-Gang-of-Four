@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Decorator.RealWorld
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Decorator Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Decorator Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -37,7 +37,7 @@ namespace DoFactory.GangOfFour.Decorator.RealWorld
     }
 
     /// <summary>
-    /// The 'Component' abstract class
+    ///     The 'Component' abstract class
     /// </summary>
     abstract class LibraryItem
     {
@@ -54,20 +54,24 @@ namespace DoFactory.GangOfFour.Decorator.RealWorld
     }
 
     /// <summary>
-    /// The 'ConcreteComponent' class
+    ///     The 'ConcreteComponent' class
     /// </summary>
     class Book : LibraryItem
     {
         private string author;
         private string title;
 
+        #region CONSTRUCTORS
+
         // Constructor
         public Book(string author, string title, int numCopies)
         {
             this.author = author;
             this.title = title;
-            this.NumCopies = numCopies;
+            NumCopies = numCopies;
         }
+
+        #endregion
 
         public override void Display()
         {
@@ -79,7 +83,7 @@ namespace DoFactory.GangOfFour.Decorator.RealWorld
     }
 
     /// <summary>
-    /// The 'ConcreteComponent' class
+    ///     The 'ConcreteComponent' class
     /// </summary>
     class Video : LibraryItem
     {
@@ -87,14 +91,18 @@ namespace DoFactory.GangOfFour.Decorator.RealWorld
         string title;
         int playTime;
 
+        #region CONSTRUCTORS
+
         // Constructor
         public Video(string director, string title, int numCopies, int playTime)
         {
             this.director = director;
             this.title = title;
-            this.NumCopies = numCopies;
+            NumCopies = numCopies;
             this.playTime = playTime;
         }
+
+        #endregion
 
         public override void Display()
         {
@@ -107,17 +115,21 @@ namespace DoFactory.GangOfFour.Decorator.RealWorld
     }
 
     /// <summary>
-    /// The 'Decorator' abstract class
+    ///     The 'Decorator' abstract class
     /// </summary>
     abstract class Decorator : LibraryItem
     {
         protected LibraryItem libraryItem;
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Decorator(LibraryItem libraryItem)
         {
             this.libraryItem = libraryItem;
         }
+
+        #endregion
 
         public override void Display()
         {
@@ -126,17 +138,19 @@ namespace DoFactory.GangOfFour.Decorator.RealWorld
     }
 
     /// <summary>
-    /// The 'ConcreteDecorator' class
+    ///     The 'ConcreteDecorator' class
     /// </summary>
     class Borrowable : Decorator
     {
         protected List<string> borrowers = new List<string>();
 
+        #region CONSTRUCTORS
+
         // Constructor
         public Borrowable(LibraryItem libraryItem)
-            : base(libraryItem)
-        {
-        }
+            : base(libraryItem) { }
+
+        #endregion
 
         public void BorrowItem(string name)
         {

@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Mediator.RealWorld
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Mediator Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Mediator Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -43,21 +43,22 @@ namespace DoFactory.GangOfFour.Mediator.RealWorld
     }
 
     /// <summary>
-    /// The 'Mediator' abstract class
+    ///     The 'Mediator' abstract class
     /// </summary>
     abstract class AbstractChatroom
     {
         public abstract void Register(Participant participant);
+
         public abstract void Send(
             string from, string to, string message);
     }
 
     /// <summary>
-    /// The 'ConcreteMediator' class
+    ///     The 'ConcreteMediator' class
     /// </summary>
     class Chatroom : AbstractChatroom
     {
-        private Dictionary<string,Participant> participants = new Dictionary<string,Participant>();
+        private Dictionary<string, Participant> participants = new Dictionary<string, Participant>();
 
         public override void Register(Participant participant)
         {
@@ -81,18 +82,12 @@ namespace DoFactory.GangOfFour.Mediator.RealWorld
     }
 
     /// <summary>
-    /// The 'AbstractColleague' class
+    ///     The 'AbstractColleague' class
     /// </summary>
     class Participant
     {
         Chatroom chatroom;
         string name;
-
-        // Constructor
-        public Participant(string name)
-        {
-            this.name = name;
-        }
 
         // Gets participant name
         public string Name
@@ -106,6 +101,16 @@ namespace DoFactory.GangOfFour.Mediator.RealWorld
             set { chatroom = value; }
             get { return chatroom; }
         }
+
+        #region CONSTRUCTORS
+
+        // Constructor
+        public Participant(string name)
+        {
+            this.name = name;
+        }
+
+        #endregion
 
         // Sends message to given participant
         public void Send(string to, string message)
@@ -123,15 +128,17 @@ namespace DoFactory.GangOfFour.Mediator.RealWorld
     }
 
     /// <summary>
-    /// A 'ConcreteColleague' class
+    ///     A 'ConcreteColleague' class
     /// </summary>
     class Beatle : Participant
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public Beatle(string name)
-            : base(name)
-        {
-        }
+            : base(name) { }
+
+        #endregion
 
         public override void Receive(string from, string message)
         {
@@ -141,15 +148,17 @@ namespace DoFactory.GangOfFour.Mediator.RealWorld
     }
 
     /// <summary>
-    /// A 'ConcreteColleague' class
+    ///     A 'ConcreteColleague' class
     /// </summary>
     class NonBeatle : Participant
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public NonBeatle(string name)
-            : base(name)
-        {
-        }
+            : base(name) { }
+
+        #endregion
 
         public override void Receive(string from, string message)
         {

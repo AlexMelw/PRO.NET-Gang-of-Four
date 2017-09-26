@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Composite.RealWorld
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Composite Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Composite Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -40,11 +40,13 @@ namespace DoFactory.GangOfFour.Composite.RealWorld
     }
 
     /// <summary>
-    /// The 'Component' Treenode
+    ///     The 'Component' Treenode
     /// </summary>
     abstract class DrawingElement
     {
         protected string name;
+
+        #region CONSTRUCTORS
 
         // Constructor
         public DrawingElement(string name)
@@ -52,21 +54,25 @@ namespace DoFactory.GangOfFour.Composite.RealWorld
             this.name = name;
         }
 
+        #endregion
+
         public abstract void Add(DrawingElement d);
         public abstract void Remove(DrawingElement d);
         public abstract void Display(int indent);
     }
 
     /// <summary>
-    /// The 'Leaf' class
+    ///     The 'Leaf' class
     /// </summary>
     class PrimitiveElement : DrawingElement
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public PrimitiveElement(string name)
-            : base(name)
-        {
-        }
+            : base(name) { }
+
+        #endregion
 
         public override void Add(DrawingElement c)
         {
@@ -83,22 +89,24 @@ namespace DoFactory.GangOfFour.Composite.RealWorld
         public override void Display(int indent)
         {
             Console.WriteLine(
-                new String('-', indent) + " " + name);
+                new string('-', indent) + " " + name);
         }
     }
 
     /// <summary>
-    /// The 'Composite' class
+    ///     The 'Composite' class
     /// </summary>
     class CompositeElement : DrawingElement
     {
         List<DrawingElement> elements = new List<DrawingElement>();
 
+        #region CONSTRUCTORS
+
         // Constructor
         public CompositeElement(string name)
-            : base(name)
-        {
-        }
+            : base(name) { }
+
+        #endregion
 
         public override void Add(DrawingElement d)
         {
@@ -112,8 +120,8 @@ namespace DoFactory.GangOfFour.Composite.RealWorld
 
         public override void Display(int indent)
         {
-            Console.WriteLine(new String('-', indent) +
-                "+ " + name);
+            Console.WriteLine(new string('-', indent) +
+                              "+ " + name);
 
             // Display each child element on this node
             foreach (DrawingElement d in elements)

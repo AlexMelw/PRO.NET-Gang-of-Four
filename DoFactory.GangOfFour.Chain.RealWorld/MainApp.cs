@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Chain.RealWorld
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Chain of Responsibility Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Chain of Responsibility Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -37,7 +37,7 @@ namespace DoFactory.GangOfFour.Chain.RealWorld
     }
 
     /// <summary>
-    /// The 'Handler' abstract class
+    ///     The 'Handler' abstract class
     /// </summary>
     abstract class Approver
     {
@@ -52,7 +52,7 @@ namespace DoFactory.GangOfFour.Chain.RealWorld
     }
 
     /// <summary>
-    /// The 'ConcreteHandler' class
+    ///     The 'ConcreteHandler' class
     /// </summary>
     class Director : Approver
     {
@@ -61,7 +61,7 @@ namespace DoFactory.GangOfFour.Chain.RealWorld
             if (purchase.Amount < 10000.0)
             {
                 Console.WriteLine("{0} approved request# {1}",
-                    this.GetType().Name, purchase.Number);
+                    GetType().Name, purchase.Number);
             }
             else if (successor != null)
             {
@@ -71,7 +71,7 @@ namespace DoFactory.GangOfFour.Chain.RealWorld
     }
 
     /// <summary>
-    /// The 'ConcreteHandler' class
+    ///     The 'ConcreteHandler' class
     /// </summary>
     class VicePresident : Approver
     {
@@ -80,7 +80,7 @@ namespace DoFactory.GangOfFour.Chain.RealWorld
             if (purchase.Amount < 25000.0)
             {
                 Console.WriteLine("{0} approved request# {1}",
-                    this.GetType().Name, purchase.Number);
+                    GetType().Name, purchase.Number);
             }
             else if (successor != null)
             {
@@ -88,9 +88,9 @@ namespace DoFactory.GangOfFour.Chain.RealWorld
             }
         }
     }
-    
+
     /// <summary>
-    /// The 'ConcreteHandler' class
+    ///     The 'ConcreteHandler' class
     /// </summary>
     class President : Approver
     {
@@ -99,7 +99,7 @@ namespace DoFactory.GangOfFour.Chain.RealWorld
             if (purchase.Amount < 100000.0)
             {
                 Console.WriteLine("{0} approved request# {1}",
-                    this.GetType().Name, purchase.Number);
+                    GetType().Name, purchase.Number);
             }
             else
             {
@@ -111,21 +111,13 @@ namespace DoFactory.GangOfFour.Chain.RealWorld
     }
 
     /// <summary>
-    /// Class holding request details
+    ///     Class holding request details
     /// </summary>
     class Purchase
     {
         int number;
         double amount;
         string purpose;
-
-        // Constructor
-        public Purchase(int number, double amount, string purpose)
-        {
-            this.number = number;
-            this.amount = amount;
-            this.purpose = purpose;
-        }
 
         // Gets or sets purchase number
         public int Number
@@ -147,5 +139,17 @@ namespace DoFactory.GangOfFour.Chain.RealWorld
             get { return purpose; }
             set { purpose = value; }
         }
+
+        #region CONSTRUCTORS
+
+        // Constructor
+        public Purchase(int number, double amount, string purpose)
+        {
+            this.number = number;
+            this.amount = amount;
+            this.purpose = purpose;
+        }
+
+        #endregion
     }
 }

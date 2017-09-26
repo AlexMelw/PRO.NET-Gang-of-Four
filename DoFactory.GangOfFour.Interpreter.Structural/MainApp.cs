@@ -1,16 +1,16 @@
-using System;
-using System.Collections;
-
 namespace DoFactory.GangOfFour.Interpreter.Structural
 {
+    using System;
+    using System.Collections;
+
     /// <summary>
-    /// MainApp startup class for Structural 
-    /// Interpreter Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Interpreter Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -37,14 +37,12 @@ namespace DoFactory.GangOfFour.Interpreter.Structural
     }
 
     /// <summary>
-    /// The 'Context' class
+    ///     The 'Context' class
     /// </summary>
-    class Context
-    {
-    }
+    class Context { }
 
     /// <summary>
-    /// The 'AbstractExpression' abstract class
+    ///     The 'AbstractExpression' abstract class
     /// </summary>
     abstract class AbstractExpression
     {
@@ -52,7 +50,7 @@ namespace DoFactory.GangOfFour.Interpreter.Structural
     }
 
     /// <summary>
-    /// The 'TerminalExpression' class
+    ///     The 'TerminalExpression' class
     /// </summary>
     class TerminalExpression : AbstractExpression
     {
@@ -63,7 +61,7 @@ namespace DoFactory.GangOfFour.Interpreter.Structural
     }
 
     /// <summary>
-    /// The 'NonterminalExpression' class
+    ///     The 'NonterminalExpression' class
     /// </summary>
     class NonterminalExpression : AbstractExpression
     {

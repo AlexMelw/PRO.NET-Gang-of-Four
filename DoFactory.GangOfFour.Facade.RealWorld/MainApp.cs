@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Facade.RealWorld
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Facade Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Facade Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -29,7 +29,7 @@ namespace DoFactory.GangOfFour.Facade.RealWorld
     }
 
     /// <summary>
-    /// The 'Subsystem ClassA' class
+    ///     The 'Subsystem ClassA' class
     /// </summary>
     class Bank
     {
@@ -41,7 +41,7 @@ namespace DoFactory.GangOfFour.Facade.RealWorld
     }
 
     /// <summary>
-    /// The 'Subsystem ClassB' class
+    ///     The 'Subsystem ClassB' class
     /// </summary>
     class Credit
     {
@@ -53,7 +53,7 @@ namespace DoFactory.GangOfFour.Facade.RealWorld
     }
 
     /// <summary>
-    /// The 'Subsystem ClassC' class
+    ///     The 'Subsystem ClassC' class
     /// </summary>
     class Loan
     {
@@ -65,22 +65,26 @@ namespace DoFactory.GangOfFour.Facade.RealWorld
     }
 
     /// <summary>
-    /// Customer class
+    ///     Customer class
     /// </summary>
     class Customer
     {
+        // Gets the name
+        public string Name { get; }
+
+        #region CONSTRUCTORS
+
         // Constructor
         public Customer(string name)
         {
-            this.Name = name;
+            Name = name;
         }
 
-        // Gets the name
-        public string Name { get; }
+        #endregion
     }
 
     /// <summary>
-    /// The 'Facade' class
+    ///     The 'Facade' class
     /// </summary>
     class Mortgage
     {

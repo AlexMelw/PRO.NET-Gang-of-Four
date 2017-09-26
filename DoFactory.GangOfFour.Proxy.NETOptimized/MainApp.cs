@@ -1,16 +1,15 @@
-using System;
-using System.Runtime.Remoting;
-
 namespace DoFactory.GangOfFour.Proxy.NETOptimized
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Proxy Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Proxy Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -29,7 +28,7 @@ namespace DoFactory.GangOfFour.Proxy.NETOptimized
     }
 
     /// <summary>
-    /// The 'Subject' interface
+    ///     The 'Subject' interface
     /// </summary>
     public interface IMath
     {
@@ -40,34 +39,53 @@ namespace DoFactory.GangOfFour.Proxy.NETOptimized
     }
 
     /// <summary>
-    /// The 'RealSubject' class
+    ///     The 'RealSubject' class
     /// </summary>
     class Math : MarshalByRefObject, IMath
     {
-        public double Add(double x, double y) { return x + y; }
-        public double Sub(double x, double y) { return x - y; }
-        public double Mul(double x, double y) { return x * y; }
-        public double Div(double x, double y) { return x / y; }
+        public double Add(double x, double y)
+        {
+            return x + y;
+        }
+
+        public double Sub(double x, double y)
+        {
+            return x - y;
+        }
+
+        public double Mul(double x, double y)
+        {
+            return x * y;
+        }
+
+        public double Div(double x, double y)
+        {
+            return x / y;
+        }
     }
 
     /// <summary>
-    /// The remote 'Proxy Object' class
+    ///     The remote 'Proxy Object' class
     /// </summary>
     class MathProxy : IMath
     {
         Math math;
 
+        #region CONSTRUCTORS
+
         // Constructor
         public MathProxy()
         {
             // Create Math instance in a different AppDomain
-            var ad =  AppDomain.CreateDomain("MathDomain", null, null);
+            var ad = AppDomain.CreateDomain("MathDomain", null, null);
 
             var o = ad.CreateInstance(
                 "DoFactory.GangOfFour.Proxy.NETOptimized",
                 "DoFactory.GangOfFour.Proxy.NETOptimized.Math");
-            math = (Math)o.Unwrap();
+            math = (Math) o.Unwrap();
         }
+
+        #endregion
 
         public double Add(double x, double y)
         {

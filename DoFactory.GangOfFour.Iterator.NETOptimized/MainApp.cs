@@ -1,33 +1,33 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Iterator.NETOptimized
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Iterator Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Iterator Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
             // Create and item collection
             var collection = new ItemCollection<Item>
-              {
-                new Item{ Name = "Item 0"},
-                new Item{ Name = "Item 1"},
-                new Item{ Name = "Item 2"},
-                new Item{ Name = "Item 3"},
-                new Item{ Name = "Item 4"},
-                new Item{ Name = "Item 5"},
-                new Item{ Name = "Item 6"},
-                new Item{ Name = "Item 7"},
-                new Item{ Name = "Item 8"}
-              };
+            {
+                new Item { Name = "Item 0" },
+                new Item { Name = "Item 1" },
+                new Item { Name = "Item 2" },
+                new Item { Name = "Item 3" },
+                new Item { Name = "Item 4" },
+                new Item { Name = "Item 5" },
+                new Item { Name = "Item 6" },
+                new Item { Name = "Item 7" },
+                new Item { Name = "Item 8" }
+            };
 
             Console.WriteLine("Iterate front to back");
             foreach (var item in collection)
@@ -56,16 +56,32 @@ namespace DoFactory.GangOfFour.Iterator.NETOptimized
     }
 
     /// <summary>
-    /// The 'ConcreteAggregate' class
+    ///     The 'ConcreteAggregate' class
     /// </summary>
     /// <typeparam name="T">Collection item type</typeparam>
     class ItemCollection<T> : IEnumerable<T>
     {
         List<T> items = new List<T>();
 
-        public void Add(T t)
+        public IEnumerable<T> FrontToBack
         {
-            items.Add(t);
+            get { return this; }
+        }
+
+        public IEnumerable<T> BackToFront
+        {
+            get {
+                for (int i = Count - 1; i >= 0; i--)
+                {
+                    yield return items[i];
+                }
+            }
+        }
+
+        // Gets number of items
+        public int Count
+        {
+            get { return items.Count; }
         }
 
         // The 'ConcreteIterator'
@@ -77,20 +93,15 @@ namespace DoFactory.GangOfFour.Iterator.NETOptimized
             }
         }
 
-        public IEnumerable<T> FrontToBack
+        // System.Collections.IEnumerable member implementation
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            get { return this; }
+            return GetEnumerator();
         }
 
-        public IEnumerable<T> BackToFront
+        public void Add(T t)
         {
-            get
-            {
-                for (int i = Count - 1; i >= 0; i--)
-                {
-                    yield return items[i];
-                }
-            }
+            items.Add(t);
         }
 
         public IEnumerable<T> FromToStep(int from, int to, int step)
@@ -100,22 +111,10 @@ namespace DoFactory.GangOfFour.Iterator.NETOptimized
                 yield return items[i];
             }
         }
-
-        // Gets number of items
-        public int Count
-        {
-            get { return items.Count; }
-        }
-
-        // System.Collections.IEnumerable member implementation
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
     }
 
     /// <summary>
-    /// The collection item
+    ///     The collection item
     /// </summary>
     class Item
     {

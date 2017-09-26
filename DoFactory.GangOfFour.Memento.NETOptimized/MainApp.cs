@@ -1,28 +1,27 @@
-using System;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Soap;
-
 namespace DoFactory.GangOfFour.Memento.NETOptimized
 {
+    using System;
+    using System.IO;
+    using System.Runtime.Serialization.Formatters.Soap;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Memento Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Memento Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
             // Init sales prospect through object initialization
             var s = new SalesProspect
-                      {
-                          Name = "Joel van Halen",
-                          Phone = "(412) 256-0990",
-                          Budget = 25000.0
-                      };
+            {
+                Name = "Joel van Halen",
+                Phone = "(412) 256-0990",
+                Budget = 25000.0
+            };
 
             // Store internal state
             var m = new ProspectMemory();
@@ -42,7 +41,7 @@ namespace DoFactory.GangOfFour.Memento.NETOptimized
     }
 
     /// <summary>
-    /// The 'Originator' class
+    ///     The 'Originator' class
     /// </summary>
     [Serializable]
     class SalesProspect
@@ -55,8 +54,7 @@ namespace DoFactory.GangOfFour.Memento.NETOptimized
         public string Name
         {
             get { return name; }
-            set
-            {
+            set {
                 name = value;
                 Console.WriteLine("Name:   " + name);
             }
@@ -66,8 +64,7 @@ namespace DoFactory.GangOfFour.Memento.NETOptimized
         public string Phone
         {
             get { return phone; }
-            set
-            {
+            set {
                 phone = value;
                 Console.WriteLine("Phone:  " + phone);
             }
@@ -77,8 +74,7 @@ namespace DoFactory.GangOfFour.Memento.NETOptimized
         public double Budget
         {
             get { return budget; }
-            set
-            {
+            set {
                 budget = value;
                 Console.WriteLine("Budget: " + budget);
             }
@@ -98,15 +94,15 @@ namespace DoFactory.GangOfFour.Memento.NETOptimized
         {
             Console.WriteLine("\nRestoring state --\n");
 
-            var s = (SalesProspect)memento.Deserialize();
-            this.Name = s.Name;
-            this.Phone = s.Phone;
-            this.Budget = s.Budget;
+            var s = (SalesProspect) memento.Deserialize();
+            Name = s.Name;
+            Phone = s.Phone;
+            Budget = s.Budget;
         }
     }
 
     /// <summary>
-    /// The 'Memento' class
+    ///     The 'Memento' class
     /// </summary>
     class Memento
     {
@@ -130,7 +126,7 @@ namespace DoFactory.GangOfFour.Memento.NETOptimized
     }
 
     /// <summary>
-    /// The 'Caretaker' class
+    ///     The 'Caretaker' class
     /// </summary>
     class ProspectMemory
     {

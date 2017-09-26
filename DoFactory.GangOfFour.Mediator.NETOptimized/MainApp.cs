@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Mediator.NETOptimized
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Mediator Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Mediator Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -42,7 +42,7 @@ namespace DoFactory.GangOfFour.Mediator.NETOptimized
     }
 
     /// <summary>
-    /// The 'Mediator' interface
+    ///     The 'Mediator' interface
     /// </summary>
     interface IChatroom
     {
@@ -51,7 +51,7 @@ namespace DoFactory.GangOfFour.Mediator.NETOptimized
     }
 
     /// <summary>
-    /// The 'ConcreteMediator' class
+    ///     The 'ConcreteMediator' class
     /// </summary>
     class Chatroom : IChatroom
     {
@@ -78,7 +78,7 @@ namespace DoFactory.GangOfFour.Mediator.NETOptimized
     }
 
     /// <summary>
-    /// The 'AbstractColleague' class
+    ///     The 'AbstractColleague' class
     /// </summary>
     class Participant
     {
@@ -104,7 +104,7 @@ namespace DoFactory.GangOfFour.Mediator.NETOptimized
     }
 
     /// <summary>
-    /// A 'ConcreteColleague' class
+    ///     A 'ConcreteColleague' class
     /// </summary>
     class Beatle : Participant
     {
@@ -116,7 +116,7 @@ namespace DoFactory.GangOfFour.Mediator.NETOptimized
     }
 
     /// <summary>
-    /// A 'ConcreteColleague' class
+    ///     A 'ConcreteColleague' class
     /// </summary>
     class NonBeatle : Participant
     {

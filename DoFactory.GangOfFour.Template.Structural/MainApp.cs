@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Template.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Template Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Template Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -25,7 +25,7 @@ namespace DoFactory.GangOfFour.Template.Structural
     }
 
     /// <summary>
-    /// The 'AbstractClass' abstract class
+    ///     The 'AbstractClass' abstract class
     /// </summary>
     abstract class AbstractClass
     {
@@ -42,7 +42,7 @@ namespace DoFactory.GangOfFour.Template.Structural
     }
 
     /// <summary>
-    /// A 'ConcreteClass' class
+    ///     A 'ConcreteClass' class
     /// </summary>
     class ConcreteClassA : AbstractClass
     {
@@ -50,6 +50,7 @@ namespace DoFactory.GangOfFour.Template.Structural
         {
             Console.WriteLine("ConcreteClassA.PrimitiveOperation1()");
         }
+
         public override void PrimitiveOperation2()
         {
             Console.WriteLine("ConcreteClassA.PrimitiveOperation2()");
@@ -57,7 +58,7 @@ namespace DoFactory.GangOfFour.Template.Structural
     }
 
     /// <summary>
-    /// A 'ConcreteClass' class
+    ///     A 'ConcreteClass' class
     /// </summary>
     class ConcreteClassB : AbstractClass
     {
@@ -65,6 +66,7 @@ namespace DoFactory.GangOfFour.Template.Structural
         {
             Console.WriteLine("ConcreteClassB.PrimitiveOperation1()");
         }
+
         public override void PrimitiveOperation2()
         {
             Console.WriteLine("ConcreteClassB.PrimitiveOperation2()");

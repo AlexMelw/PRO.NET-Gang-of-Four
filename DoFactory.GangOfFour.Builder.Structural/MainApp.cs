@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Builder.Structural
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Structural
-    /// Builder Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Builder Design Pattern.
     /// </summary>
     public class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         public static void Main()
         {
@@ -35,7 +35,7 @@ namespace DoFactory.GangOfFour.Builder.Structural
     }
 
     /// <summary>
-    /// The 'Director' class
+    ///     The 'Director' class
     /// </summary>
     class Director
     {
@@ -48,7 +48,7 @@ namespace DoFactory.GangOfFour.Builder.Structural
     }
 
     /// <summary>
-    /// The 'Builder' abstract class
+    ///     The 'Builder' abstract class
     /// </summary>
     abstract class Builder
     {
@@ -58,7 +58,7 @@ namespace DoFactory.GangOfFour.Builder.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteBuilder1' class
+    ///     The 'ConcreteBuilder1' class
     /// </summary>
     class ConcreteBuilder1 : Builder
     {
@@ -81,7 +81,7 @@ namespace DoFactory.GangOfFour.Builder.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteBuilder2' class
+    ///     The 'ConcreteBuilder2' class
     /// </summary>
     class ConcreteBuilder2 : Builder
     {
@@ -104,7 +104,7 @@ namespace DoFactory.GangOfFour.Builder.Structural
     }
 
     /// <summary>
-    /// The 'Product' class
+    ///     The 'Product' class
     /// </summary>
     class Product
     {

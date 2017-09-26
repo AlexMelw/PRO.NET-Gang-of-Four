@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Flyweight.NETOptimized
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Flyweight Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Flyweight Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -36,7 +36,7 @@ namespace DoFactory.GangOfFour.Flyweight.NETOptimized
     }
 
     /// <summary>
-    /// The 'FlyweightFactory' class
+    ///     The 'FlyweightFactory' class
     /// </summary>
     class CharacterFactory
     {
@@ -45,8 +45,7 @@ namespace DoFactory.GangOfFour.Flyweight.NETOptimized
         // Character indexer
         public Character this[char key]
         {
-            get
-            {
+            get {
                 // Uses "lazy initialization" -- i.e. only create when needed.
                 Character character = null;
                 if (characters.ContainsKey(key))
@@ -57,8 +56,8 @@ namespace DoFactory.GangOfFour.Flyweight.NETOptimized
                 {
                     // Instead of a case statement with 26 cases (characters).
                     // First, get qualified class name, then dynamically create instance 
-                    string name = this.GetType().Namespace + "." + "Character" + key.ToString();
-                    character = (Character)Activator.CreateInstance(Type.GetType(name));
+                    string name = GetType().Namespace + "." + "Character" + key.ToString();
+                    character = (Character) Activator.CreateInstance(Type.GetType(name));
                 }
 
                 return character;
@@ -67,7 +66,7 @@ namespace DoFactory.GangOfFour.Flyweight.NETOptimized
     }
 
     /// <summary>
-    /// The 'Flyweight' class
+    ///     The 'Flyweight' class
     /// </summary>
     class Character
     {
@@ -79,59 +78,70 @@ namespace DoFactory.GangOfFour.Flyweight.NETOptimized
 
         public void Display(int pointSize)
         {
-            Console.WriteLine(this.symbol +
-                      " (pointsize " + pointSize + ")");
+            Console.WriteLine(symbol +
+                              " (pointsize " + pointSize + ")");
         }
-
     }
 
     /// <summary>
-    /// A 'ConcreteFlyweight' class
+    ///     A 'ConcreteFlyweight' class
     /// </summary>
     class CharacterA : Character
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public CharacterA()
         {
-            this.symbol = 'A';
-            this.height = 100;
-            this.width = 120;
-            this.ascent = 70;
-            this.descent = 0;
+            symbol = 'A';
+            height = 100;
+            width = 120;
+            ascent = 70;
+            descent = 0;
         }
+
+        #endregion
     }
 
     /// <summary>
-    /// A 'ConcreteFlyweight' class
+    ///     A 'ConcreteFlyweight' class
     /// </summary>
     class CharacterB : Character
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public CharacterB()
         {
-            this.symbol = 'B';
-            this.height = 100;
-            this.width = 140;
-            this.ascent = 72;
-            this.descent = 0;
+            symbol = 'B';
+            height = 100;
+            width = 140;
+            ascent = 72;
+            descent = 0;
         }
+
+        #endregion
     }
 
     // ... C, D, E, etc.
 
     /// <summary>
-    /// A 'ConcreteFlyweight' class
+    ///     A 'ConcreteFlyweight' class
     /// </summary>
     class CharacterZ : Character
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public CharacterZ()
         {
-            this.symbol = 'Z';
-            this.height = 100;
-            this.width = 100;
-            this.ascent = 68;
-            this.descent = 0;
+            symbol = 'Z';
+            height = 100;
+            width = 100;
+            ascent = 68;
+            descent = 0;
         }
+
+        #endregion
     }
 }

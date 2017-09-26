@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Observer.RealWorld
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Observer Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Observer Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -31,7 +31,7 @@ namespace DoFactory.GangOfFour.Observer.RealWorld
     }
 
     /// <summary>
-    /// The 'Subject' abstract class
+    ///     The 'Subject' abstract class
     /// </summary>
     abstract class Stock
     {
@@ -39,12 +39,35 @@ namespace DoFactory.GangOfFour.Observer.RealWorld
         double price;
         List<IInvestor> investors = new List<IInvestor>();
 
+        // Gets or sets the price
+        public double Price
+        {
+            get { return price; }
+            set {
+                if (price != value)
+                {
+                    price = value;
+                    Notify();
+                }
+            }
+        }
+
+        // Gets the symbol
+        public string Symbol
+        {
+            get { return symbol; }
+        }
+
+        #region CONSTRUCTORS
+
         // Constructor
         public Stock(string symbol, double price)
         {
             this.symbol = symbol;
             this.price = price;
         }
+
+        #endregion
 
         public void Attach(IInvestor investor)
         {
@@ -65,42 +88,24 @@ namespace DoFactory.GangOfFour.Observer.RealWorld
 
             Console.WriteLine("");
         }
-
-        // Gets or sets the price
-        public double Price
-        {
-            get { return price; }
-            set
-            {
-                if (price != value)
-                {
-                    price = value;
-                    Notify();
-                }
-            }
-        }
-
-        // Gets the symbol
-        public string Symbol
-        {
-            get { return symbol; }
-        }
     }
 
     /// <summary>
-    /// The 'ConcreteSubject' class
+    ///     The 'ConcreteSubject' class
     /// </summary>
     class IBM : Stock
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public IBM(string symbol, double price)
-            : base(symbol, price)
-        {
-        }
+            : base(symbol, price) { }
+
+        #endregion
     }
 
     /// <summary>
-    /// The 'Observer' interface
+    ///     The 'Observer' interface
     /// </summary>
     interface IInvestor
     {
@@ -108,12 +113,21 @@ namespace DoFactory.GangOfFour.Observer.RealWorld
     }
 
     /// <summary>
-    /// The 'ConcreteObserver' class
+    ///     The 'ConcreteObserver' class
     /// </summary>
     class Investor : IInvestor
     {
         string name;
         Stock stock;
+
+        // Gets or sets the stock
+        public Stock Stock
+        {
+            get { return stock; }
+            set { stock = value; }
+        }
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Investor(string name)
@@ -121,17 +135,12 @@ namespace DoFactory.GangOfFour.Observer.RealWorld
             this.name = name;
         }
 
+        #endregion
+
         public void Update(Stock stock)
         {
             Console.WriteLine("Notified {0} of {1}'s " +
-                "change to {2:C}", name, stock.Symbol, stock.Price);
-        }
-
-        // Gets or sets the stock
-        public Stock Stock
-        {
-            get { return stock; }
-            set { stock = value; }
+                              "change to {2:C}", name, stock.Symbol, stock.Price);
         }
     }
 }

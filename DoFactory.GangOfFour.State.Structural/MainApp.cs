@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.State.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Structural
-    /// State Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     State Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -28,7 +28,7 @@ namespace DoFactory.GangOfFour.State.Structural
     }
 
     /// <summary>
-    /// The 'State' abstract class
+    ///     The 'State' abstract class
     /// </summary>
     abstract class State
     {
@@ -36,7 +36,7 @@ namespace DoFactory.GangOfFour.State.Structural
     }
 
     /// <summary>
-    /// A 'ConcreteState' class
+    ///     A 'ConcreteState' class
     /// </summary>
     class ConcreteStateA : State
     {
@@ -47,7 +47,7 @@ namespace DoFactory.GangOfFour.State.Structural
     }
 
     /// <summary>
-    /// A 'ConcreteState' class
+    ///     A 'ConcreteState' class
     /// </summary>
     class ConcreteStateB : State
     {
@@ -58,28 +58,31 @@ namespace DoFactory.GangOfFour.State.Structural
     }
 
     /// <summary>
-    /// The 'Context' class
+    ///     The 'Context' class
     /// </summary>
     class Context
     {
         State state;
 
-        // Constructor
-        public Context(State state)
-        {
-            this.State = state;
-        }
-
         // Gets or sets the state
         public State State
         {
             get { return state; }
-            set
-            {
+            set {
                 state = value;
                 Console.WriteLine("State: " + state.GetType().Name);
             }
         }
+
+        #region CONSTRUCTORS
+
+        // Constructor
+        public Context(State state)
+        {
+            State = state;
+        }
+
+        #endregion
 
         public void Request()
         {

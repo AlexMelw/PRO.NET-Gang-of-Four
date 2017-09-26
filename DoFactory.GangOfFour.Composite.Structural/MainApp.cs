@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Composite.Structural
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Structural 
-    /// Composite Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Composite Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -40,11 +40,13 @@ namespace DoFactory.GangOfFour.Composite.Structural
     }
 
     /// <summary>
-    /// The 'Component' abstract class
+    ///     The 'Component' abstract class
     /// </summary>
     abstract class Component
     {
         protected string name;
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Component(string name)
@@ -52,23 +54,27 @@ namespace DoFactory.GangOfFour.Composite.Structural
             this.name = name;
         }
 
+        #endregion
+
         public abstract void Add(Component c);
         public abstract void Remove(Component c);
         public abstract void Display(int depth);
     }
 
     /// <summary>
-    /// The 'Composite' class
+    ///     The 'Composite' class
     /// </summary>
     class Composite : Component
     {
         List<Component> children = new List<Component>();
 
+        #region CONSTRUCTORS
+
         // Constructor
         public Composite(string name)
-            : base(name)
-        {
-        }
+            : base(name) { }
+
+        #endregion
 
         public override void Add(Component component)
         {
@@ -82,7 +88,7 @@ namespace DoFactory.GangOfFour.Composite.Structural
 
         public override void Display(int depth)
         {
-            Console.WriteLine(new String('-', depth) + name);
+            Console.WriteLine(new string('-', depth) + name);
 
             // Recursively display child nodes
             foreach (Component component in children)
@@ -93,15 +99,17 @@ namespace DoFactory.GangOfFour.Composite.Structural
     }
 
     /// <summary>
-    /// The 'Leaf' class
+    ///     The 'Leaf' class
     /// </summary>
     class Leaf : Component
     {
+        #region CONSTRUCTORS
+
         // Constructor
         public Leaf(string name)
-            : base(name)
-        {
-        }
+            : base(name) { }
+
+        #endregion
 
         public override void Add(Component c)
         {
@@ -115,7 +123,7 @@ namespace DoFactory.GangOfFour.Composite.Structural
 
         public override void Display(int depth)
         {
-            Console.WriteLine(new String('-', depth) + name);
+            Console.WriteLine(new string('-', depth) + name);
         }
     }
 }

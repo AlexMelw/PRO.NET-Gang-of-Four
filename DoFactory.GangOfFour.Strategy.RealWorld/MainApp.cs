@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Strategy.RealWorld
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Strategy Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Strategy Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -38,7 +38,7 @@ namespace DoFactory.GangOfFour.Strategy.RealWorld
     }
 
     /// <summary>
-    /// The 'Strategy' abstract class
+    ///     The 'Strategy' abstract class
     /// </summary>
     abstract class SortStrategy
     {
@@ -46,19 +46,19 @@ namespace DoFactory.GangOfFour.Strategy.RealWorld
     }
 
     /// <summary>
-    /// A 'ConcreteStrategy' class
+    ///     A 'ConcreteStrategy' class
     /// </summary>
     class QuickSort : SortStrategy
     {
         public override void Sort(List<string> list)
         {
-            list.Sort();  // Default is Quicksort
+            list.Sort(); // Default is Quicksort
             Console.WriteLine("QuickSorted list ");
         }
     }
 
     /// <summary>
-    /// A 'ConcreteStrategy' class
+    ///     A 'ConcreteStrategy' class
     /// </summary>
     class ShellSort : SortStrategy
     {
@@ -70,7 +70,7 @@ namespace DoFactory.GangOfFour.Strategy.RealWorld
     }
 
     /// <summary>
-    /// A 'ConcreteStrategy' class
+    ///     A 'ConcreteStrategy' class
     /// </summary>
     class MergeSort : SortStrategy
     {
@@ -82,7 +82,7 @@ namespace DoFactory.GangOfFour.Strategy.RealWorld
     }
 
     /// <summary>
-    /// The 'Context' class
+    ///     The 'Context' class
     /// </summary>
     class SortedList
     {

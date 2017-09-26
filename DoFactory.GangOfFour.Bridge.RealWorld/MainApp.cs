@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Bridge.RealWorld
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Bridge Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Bridge Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -36,7 +36,7 @@ namespace DoFactory.GangOfFour.Bridge.RealWorld
     }
 
     /// <summary>
-    /// The 'Abstraction' class
+    ///     The 'Abstraction' class
     /// </summary>
     class CustomersBase
     {
@@ -80,7 +80,7 @@ namespace DoFactory.GangOfFour.Bridge.RealWorld
     }
 
     /// <summary>
-    /// The 'RefinedAbstraction' class
+    ///     The 'RefinedAbstraction' class
     /// </summary>
     class Customers : CustomersBase
     {
@@ -95,7 +95,7 @@ namespace DoFactory.GangOfFour.Bridge.RealWorld
     }
 
     /// <summary>
-    /// The 'Implementor' abstract class
+    ///     The 'Implementor' abstract class
     /// </summary>
     abstract class DataObject
     {
@@ -109,7 +109,7 @@ namespace DoFactory.GangOfFour.Bridge.RealWorld
     }
 
     /// <summary>
-    /// The 'ConcreteImplementor' class
+    ///     The 'ConcreteImplementor' class
     /// </summary>
     class CustomersData : DataObject
     {
@@ -117,6 +117,8 @@ namespace DoFactory.GangOfFour.Bridge.RealWorld
         int current = 0;
 
         string city;
+
+        #region CONSTRUCTORS
 
         public CustomersData(string city)
         {
@@ -129,6 +131,8 @@ namespace DoFactory.GangOfFour.Bridge.RealWorld
             customers.Add("Ann Stills");
             customers.Add("Lisa Giolani");
         }
+
+        #endregion
 
         public override void NextRecord()
         {

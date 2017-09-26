@@ -1,5 +1,4 @@
 using System.Reflection;
-using System.Runtime.CompilerServices;
 
 [assembly: AssemblyTitle("Gang Of Four Design Patterns")]
 [assembly: AssemblyDescription("")]

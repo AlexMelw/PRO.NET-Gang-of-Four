@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Decorator.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Structural 
-    /// Decorator Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Decorator Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -30,7 +30,7 @@ namespace DoFactory.GangOfFour.Decorator.Structural
     }
 
     /// <summary>
-    /// The 'Component' abstract class
+    ///     The 'Component' abstract class
     /// </summary>
     abstract class Component
     {
@@ -38,7 +38,7 @@ namespace DoFactory.GangOfFour.Decorator.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteComponent' class
+    ///     The 'ConcreteComponent' class
     /// </summary>
     class ConcreteComponent : Component
     {
@@ -49,7 +49,7 @@ namespace DoFactory.GangOfFour.Decorator.Structural
     }
 
     /// <summary>
-    /// The 'Decorator' abstract class
+    ///     The 'Decorator' abstract class
     /// </summary>
     abstract class Decorator : Component
     {
@@ -70,7 +70,7 @@ namespace DoFactory.GangOfFour.Decorator.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteDecoratorA' class
+    ///     The 'ConcreteDecoratorA' class
     /// </summary>
     class ConcreteDecoratorA : Decorator
     {
@@ -82,7 +82,7 @@ namespace DoFactory.GangOfFour.Decorator.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteDecoratorB' class
+    ///     The 'ConcreteDecoratorB' class
     /// </summary>
     class ConcreteDecoratorB : Decorator
     {
@@ -93,8 +93,6 @@ namespace DoFactory.GangOfFour.Decorator.Structural
             Console.WriteLine("ConcreteDecoratorB.Operation()");
         }
 
-        void AddedBehavior()
-        {
-        }
+        void AddedBehavior() { }
     }
 }

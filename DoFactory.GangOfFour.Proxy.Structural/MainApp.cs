@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Proxy.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Structural
-    /// Proxy Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Proxy Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -23,7 +23,7 @@ namespace DoFactory.GangOfFour.Proxy.Structural
     }
 
     /// <summary>
-    /// The 'Subject' abstract class
+    ///     The 'Subject' abstract class
     /// </summary>
     abstract class Subject
     {
@@ -31,7 +31,7 @@ namespace DoFactory.GangOfFour.Proxy.Structural
     }
 
     /// <summary>
-    /// The 'RealSubject' class
+    ///     The 'RealSubject' class
     /// </summary>
     class RealSubject : Subject
     {
@@ -42,7 +42,7 @@ namespace DoFactory.GangOfFour.Proxy.Structural
     }
 
     /// <summary>
-    /// The 'Proxy' class
+    ///     The 'Proxy' class
     /// </summary>
     class Proxy : Subject
     {

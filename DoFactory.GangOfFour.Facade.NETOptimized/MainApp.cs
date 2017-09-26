@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Facade.NETOptimized
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Facade Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Facade Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -28,7 +28,7 @@ namespace DoFactory.GangOfFour.Facade.NETOptimized
     }
 
     /// <summary>
-    /// The 'Subsystem ClassA' class
+    ///     The 'Subsystem ClassA' class
     /// </summary>
     class Bank
     {
@@ -40,7 +40,7 @@ namespace DoFactory.GangOfFour.Facade.NETOptimized
     }
 
     /// <summary>
-    /// The 'Subsystem ClassB' class
+    ///     The 'Subsystem ClassB' class
     /// </summary>
     class Credit
     {
@@ -52,7 +52,7 @@ namespace DoFactory.GangOfFour.Facade.NETOptimized
     }
 
     /// <summary>
-    /// The 'Subsystem ClassC' class
+    ///     The 'Subsystem ClassC' class
     /// </summary>
     class Loan
     {
@@ -64,7 +64,7 @@ namespace DoFactory.GangOfFour.Facade.NETOptimized
     }
 
     /// <summary>
-    /// The 'Facade' class
+    ///     The 'Facade' class
     /// </summary>
     class Mortgage
     {
@@ -98,7 +98,7 @@ namespace DoFactory.GangOfFour.Facade.NETOptimized
     }
 
     /// <summary>
-    /// Customer class
+    ///     Customer class
     /// </summary>
     class Customer
     {

@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Command.RealWorld
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Command Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Command Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -35,7 +35,7 @@ namespace DoFactory.GangOfFour.Command.RealWorld
     }
 
     /// <summary>
-    /// The 'Command' abstract class
+    ///     The 'Command' abstract class
     /// </summary>
     abstract class Command
     {
@@ -44,22 +44,13 @@ namespace DoFactory.GangOfFour.Command.RealWorld
     }
 
     /// <summary>
-    /// The 'ConcreteCommand' class
+    ///     The 'ConcreteCommand' class
     /// </summary>
     class CalculatorCommand : Command
     {
         char @operator;
         int operand;
         Calculator calculator;
-
-        // Constructor
-        public CalculatorCommand(Calculator calculator,
-            char @operator, int operand)
-        {
-            this.calculator = calculator;
-            this.@operator = @operator;
-            this.operand = operand;
-        }
 
         // Gets operator
         public char Operator
@@ -72,6 +63,19 @@ namespace DoFactory.GangOfFour.Command.RealWorld
         {
             set { operand = value; }
         }
+
+        #region CONSTRUCTORS
+
+        // Constructor
+        public CalculatorCommand(Calculator calculator,
+            char @operator, int operand)
+        {
+            this.calculator = calculator;
+            this.@operator = @operator;
+            this.operand = operand;
+        }
+
+        #endregion
 
         // Execute new command
         public override void Execute()
@@ -94,14 +98,15 @@ namespace DoFactory.GangOfFour.Command.RealWorld
                 case '-': return '+';
                 case '*': return '/';
                 case '/': return '*';
-                default: throw new
-                  ArgumentException("@operator");
+                default:
+                    throw new
+                        ArgumentException("@operator");
             }
         }
     }
 
     /// <summary>
-    /// The 'Receiver' class
+    ///     The 'Receiver' class
     /// </summary>
     class Calculator
     {
@@ -111,10 +116,18 @@ namespace DoFactory.GangOfFour.Command.RealWorld
         {
             switch (@operator)
             {
-                case '+': curr += operand; break;
-                case '-': curr -= operand; break;
-                case '*': curr *= operand; break;
-                case '/': curr /= operand; break;
+                case '+':
+                    curr += operand;
+                    break;
+                case '-':
+                    curr -= operand;
+                    break;
+                case '*':
+                    curr *= operand;
+                    break;
+                case '/':
+                    curr /= operand;
+                    break;
             }
             Console.WriteLine(
                 "Current value = {0,3} (following {1} {2})",
@@ -123,12 +136,13 @@ namespace DoFactory.GangOfFour.Command.RealWorld
     }
 
     /// <summary>
-    /// The 'Invoker' class
+    ///     The 'Invoker' class
     /// </summary>
     class User
     {
         // Initializers
         Calculator calculator = new Calculator();
+
         List<Command> commands = new List<Command>();
         int current = 0;
 

@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.State.NETOptimized
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// State Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     State Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -30,7 +30,7 @@ namespace DoFactory.GangOfFour.State.NETOptimized
     }
 
     /// <summary>
-    /// The 'State' abstract class
+    ///     The 'State' abstract class
     /// </summary>
     abstract class State
     {
@@ -50,14 +50,16 @@ namespace DoFactory.GangOfFour.State.NETOptimized
     }
 
     /// <summary>
-    /// A 'ConcreteState' class
-    /// <remarks>
-    /// Red state indicates account is overdrawn 
-    /// </remarks>
+    ///     A 'ConcreteState' class
+    ///     <remarks>
+    ///         Red state indicates account is overdrawn
+    ///     </remarks>
     /// </summary>
     class RedState : State
     {
         double serviceFee;
+
+        #region CONSTRUCTORS
 
         // Constructor
         public RedState(State state)
@@ -67,14 +69,7 @@ namespace DoFactory.GangOfFour.State.NETOptimized
             Initialize();
         }
 
-        private void Initialize()
-        {
-            // Should come from a datasource
-            interest = 0.0;
-            lowerLimit = -100.0;
-            upperLimit = 0.0;
-            serviceFee = 15.00;
-        }
+        #endregion
 
         public override void Deposit(double amount)
         {
@@ -93,6 +88,15 @@ namespace DoFactory.GangOfFour.State.NETOptimized
             // No interest is paid
         }
 
+        private void Initialize()
+        {
+            // Should come from a datasource
+            interest = 0.0;
+            lowerLimit = -100.0;
+            upperLimit = 0.0;
+            serviceFee = 15.00;
+        }
+
         private void StateChangeCheck()
         {
             if (Balance > upperLimit)
@@ -103,19 +107,19 @@ namespace DoFactory.GangOfFour.State.NETOptimized
     }
 
     /// <summary>
-    /// A 'ConcreteState' class
-    /// <remarks>
-    /// Silver state is non-interest bearing state
-    /// </remarks>
+    ///     A 'ConcreteState' class
+    ///     <remarks>
+    ///         Silver state is non-interest bearing state
+    ///     </remarks>
     /// </summary>
     class SilverState : State
     {
+        #region CONSTRUCTORS
+
         // Overloaded constructors
 
         public SilverState(State state) :
-            this(state.Balance, state.Account)
-        {
-        }
+            this(state.Balance, state.Account) { }
 
         public SilverState(double balance, Account account)
         {
@@ -124,13 +128,7 @@ namespace DoFactory.GangOfFour.State.NETOptimized
             Initialize();
         }
 
-        private void Initialize()
-        {
-            // Should come from a datasource
-            interest = 0.0;
-            lowerLimit = 0.0;
-            upperLimit = 1000.0;
-        }
+        #endregion
 
         public override void Deposit(double amount)
         {
@@ -148,6 +146,14 @@ namespace DoFactory.GangOfFour.State.NETOptimized
         {
             Balance += interest * Balance;
             StateChangeCheck();
+        }
+
+        private void Initialize()
+        {
+            // Should come from a datasource
+            interest = 0.0;
+            lowerLimit = 0.0;
+            upperLimit = 1000.0;
         }
 
         private void StateChangeCheck()
@@ -164,18 +170,18 @@ namespace DoFactory.GangOfFour.State.NETOptimized
     }
 
     /// <summary>
-    /// A 'ConcreteState' class
-    /// <remarks>
-    /// Gold incidates interest bearing state
-    /// </remarks>
+    ///     A 'ConcreteState' class
+    ///     <remarks>
+    ///         Gold incidates interest bearing state
+    ///     </remarks>
     /// </summary>
     class GoldState : State
     {
+        #region CONSTRUCTORS
+
         // Overloaded constructors
         public GoldState(State state)
-            : this(state.Balance, state.Account)
-        {
-        }
+            : this(state.Balance, state.Account) { }
 
         public GoldState(double balance, Account account)
         {
@@ -184,13 +190,7 @@ namespace DoFactory.GangOfFour.State.NETOptimized
             Initialize();
         }
 
-        private void Initialize()
-        {
-            // Should come from a database
-            interest = 0.05;
-            lowerLimit = 1000.0;
-            upperLimit = 10000000.0;
-        }
+        #endregion
 
         public override void Deposit(double amount)
         {
@@ -210,6 +210,14 @@ namespace DoFactory.GangOfFour.State.NETOptimized
             StateChangeCheck();
         }
 
+        private void Initialize()
+        {
+            // Should come from a database
+            interest = 0.05;
+            lowerLimit = 1000.0;
+            upperLimit = 10000000.0;
+        }
+
         private void StateChangeCheck()
         {
             if (Balance < 0.0)
@@ -224,19 +232,11 @@ namespace DoFactory.GangOfFour.State.NETOptimized
     }
 
     /// <summary>
-    /// The 'Context' class
+    ///     The 'Context' class
     /// </summary>
     class Account
     {
         string owner;
-
-        // Constructor
-        public Account(string owner)
-        {
-            // New accounts are 'Silver' by default
-            this.owner = owner;
-            this.State = new SilverState(0.0, this);
-        }
 
         // Gets the balance
         public double Balance
@@ -247,12 +247,24 @@ namespace DoFactory.GangOfFour.State.NETOptimized
         // Gets or sets state
         public State State { get; set; }
 
+        #region CONSTRUCTORS
+
+        // Constructor
+        public Account(string owner)
+        {
+            // New accounts are 'Silver' by default
+            this.owner = owner;
+            State = new SilverState(0.0, this);
+        }
+
+        #endregion
+
         public void Deposit(double amount)
         {
             State.Deposit(amount);
             Console.WriteLine("Deposited {0:C} --- ", amount);
-            Console.WriteLine(" Balance = {0:C}", this.Balance);
-            Console.WriteLine(" Status  = {0}", this.State.GetType().Name);
+            Console.WriteLine(" Balance = {0:C}", Balance);
+            Console.WriteLine(" Status  = {0}", State.GetType().Name);
             Console.WriteLine("");
         }
 
@@ -260,16 +272,16 @@ namespace DoFactory.GangOfFour.State.NETOptimized
         {
             State.Withdraw(amount);
             Console.WriteLine("Withdrew {0:C} --- ", amount);
-            Console.WriteLine(" Balance = {0:C}", this.Balance);
-            Console.WriteLine(" Status  = {0}\n", this.State.GetType().Name);
+            Console.WriteLine(" Balance = {0:C}", Balance);
+            Console.WriteLine(" Status  = {0}\n", State.GetType().Name);
         }
 
         public void PayInterest()
         {
             State.PayInterest();
             Console.WriteLine("Interest Paid --- ");
-            Console.WriteLine(" Balance = {0:C}", this.Balance);
-            Console.WriteLine(" Status  = {0}\n", this.State.GetType().Name);
+            Console.WriteLine(" Balance = {0:C}", Balance);
+            Console.WriteLine(" Status  = {0}\n", State.GetType().Name);
         }
     }
 }

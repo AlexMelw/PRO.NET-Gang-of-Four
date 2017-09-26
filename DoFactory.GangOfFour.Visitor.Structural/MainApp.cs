@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Visitor.Structural
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Structural 
-    /// Visitor Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Visitor Design Pattern.
     /// </summary>
     class MainApp
     {
@@ -30,18 +30,19 @@ namespace DoFactory.GangOfFour.Visitor.Structural
     }
 
     /// <summary>
-    /// The 'Visitor' abstract class
+    ///     The 'Visitor' abstract class
     /// </summary>
     abstract class Visitor
     {
         public abstract void VisitConcreteElementA(
             ConcreteElementA concreteElementA);
+
         public abstract void VisitConcreteElementB(
             ConcreteElementB concreteElementB);
     }
 
     /// <summary>
-    /// A 'ConcreteVisitor' class
+    ///     A 'ConcreteVisitor' class
     /// </summary>
     class ConcreteVisitor1 : Visitor
     {
@@ -49,19 +50,19 @@ namespace DoFactory.GangOfFour.Visitor.Structural
             ConcreteElementA concreteElementA)
         {
             Console.WriteLine("{0} visited by {1}",
-                concreteElementA.GetType().Name, this.GetType().Name);
+                concreteElementA.GetType().Name, GetType().Name);
         }
 
         public override void VisitConcreteElementB(
             ConcreteElementB concreteElementB)
         {
             Console.WriteLine("{0} visited by {1}",
-                concreteElementB.GetType().Name, this.GetType().Name);
+                concreteElementB.GetType().Name, GetType().Name);
         }
     }
 
     /// <summary>
-    /// A 'ConcreteVisitor' class
+    ///     A 'ConcreteVisitor' class
     /// </summary>
     class ConcreteVisitor2 : Visitor
     {
@@ -69,19 +70,19 @@ namespace DoFactory.GangOfFour.Visitor.Structural
             ConcreteElementA concreteElementA)
         {
             Console.WriteLine("{0} visited by {1}",
-                concreteElementA.GetType().Name, this.GetType().Name);
+                concreteElementA.GetType().Name, GetType().Name);
         }
 
         public override void VisitConcreteElementB(
             ConcreteElementB concreteElementB)
         {
             Console.WriteLine("{0} visited by {1}",
-                concreteElementB.GetType().Name, this.GetType().Name);
+                concreteElementB.GetType().Name, GetType().Name);
         }
     }
 
     /// <summary>
-    /// The 'Element' abstract class
+    ///     The 'Element' abstract class
     /// </summary>
     abstract class Element
     {
@@ -89,7 +90,7 @@ namespace DoFactory.GangOfFour.Visitor.Structural
     }
 
     /// <summary>
-    /// A 'ConcreteElement' class
+    ///     A 'ConcreteElement' class
     /// </summary>
     class ConcreteElementA : Element
     {
@@ -98,13 +99,11 @@ namespace DoFactory.GangOfFour.Visitor.Structural
             visitor.VisitConcreteElementA(this);
         }
 
-        public void OperationA()
-        {
-        }
+        public void OperationA() { }
     }
 
     /// <summary>
-    /// A 'ConcreteElement' class
+    ///     A 'ConcreteElement' class
     /// </summary>
     class ConcreteElementB : Element
     {
@@ -113,13 +112,11 @@ namespace DoFactory.GangOfFour.Visitor.Structural
             visitor.VisitConcreteElementB(this);
         }
 
-        public void OperationB()
-        {
-        }
+        public void OperationB() { }
     }
 
     /// <summary>
-    /// The 'ObjectStructure' class
+    ///     The 'ObjectStructure' class
     /// </summary>
     class ObjectStructure
     {

@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Observer.Structural
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Structural 
-    /// Observer Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Observer Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -31,7 +31,7 @@ namespace DoFactory.GangOfFour.Observer.Structural
     }
 
     /// <summary>
-    /// The 'Subject' abstract class
+    ///     The 'Subject' abstract class
     /// </summary>
     abstract class Subject
     {
@@ -57,7 +57,7 @@ namespace DoFactory.GangOfFour.Observer.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteSubject' class
+    ///     The 'ConcreteSubject' class
     /// </summary>
     class ConcreteSubject : Subject
     {
@@ -72,7 +72,7 @@ namespace DoFactory.GangOfFour.Observer.Structural
     }
 
     /// <summary>
-    /// The 'Observer' abstract class
+    ///     The 'Observer' abstract class
     /// </summary>
     abstract class Observer
     {
@@ -80,13 +80,22 @@ namespace DoFactory.GangOfFour.Observer.Structural
     }
 
     /// <summary>
-    /// The 'ConcreteObserver' class
+    ///     The 'ConcreteObserver' class
     /// </summary>
     class ConcreteObserver : Observer
     {
         string name;
         string observerState;
         ConcreteSubject subject;
+
+        // Gets or sets subject
+        public ConcreteSubject Subject
+        {
+            get { return subject; }
+            set { subject = value; }
+        }
+
+        #region CONSTRUCTORS
 
         // Constructor
         public ConcreteObserver(
@@ -96,18 +105,13 @@ namespace DoFactory.GangOfFour.Observer.Structural
             this.name = name;
         }
 
+        #endregion
+
         public override void Update()
         {
             observerState = subject.SubjectState;
             Console.WriteLine("Observer {0}'s new state is {1}",
                 name, observerState);
-        }
-
-        // Gets or sets subject
-        public ConcreteSubject Subject
-        {
-            get { return subject; }
-            set { subject = value; }
         }
     }
 }

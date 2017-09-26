@@ -1,28 +1,28 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Strategy.NETOptimized
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Strategy Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Strategy Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
             // Two contexts following different strategies
             var studentRecords = new SortedList()
-              {
-                new Student{ Name = "Samual", Ssn = "154-33-2009" },
-                new Student{ Name = "Jimmy", Ssn = "487-43-1665" },
-                new Student{ Name = "Sandra", Ssn = "655-00-2944" },
-                new Student{ Name = "Vivek", Ssn = "133-98-8399" },
-                new Student{ Name = "Anna", Ssn = "760-94-9844" },
-              };
+            {
+                new Student { Name = "Samual", Ssn = "154-33-2009" },
+                new Student { Name = "Jimmy", Ssn = "487-43-1665" },
+                new Student { Name = "Sandra", Ssn = "655-00-2944" },
+                new Student { Name = "Vivek", Ssn = "133-98-8399" },
+                new Student { Name = "Anna", Ssn = "760-94-9844" },
+            };
 
             studentRecords.SortStrategy = new QuickSort();
             studentRecords.SortStudents();
@@ -39,7 +39,7 @@ namespace DoFactory.GangOfFour.Strategy.NETOptimized
     }
 
     /// <summary>
-    /// The 'Strategy' interface
+    ///     The 'Strategy' interface
     /// </summary>
     interface ISortStrategy
     {
@@ -47,7 +47,7 @@ namespace DoFactory.GangOfFour.Strategy.NETOptimized
     }
 
     /// <summary>
-    /// A 'ConcreteStrategy' class
+    ///     A 'ConcreteStrategy' class
     /// </summary>
     class QuickSort : ISortStrategy
     {
@@ -76,7 +76,7 @@ namespace DoFactory.GangOfFour.Strategy.NETOptimized
                 int compareleft = list[left].Name.CompareTo(list[pivot].Name);
                 int compareright = list[right].Name.CompareTo(list[pivot].Name);
 
-                if ((compareleft >= 0) && (compareright < 0))
+                if (compareleft >= 0 && compareright < 0)
                 {
                     Swap(list, left, right);
                 }
@@ -117,7 +117,7 @@ namespace DoFactory.GangOfFour.Strategy.NETOptimized
     }
 
     /// <summary>
-    /// A 'ConcreteStrategy' class
+    ///     A 'ConcreteStrategy' class
     /// </summary>
     class ShellSort : ISortStrategy
     {
@@ -129,7 +129,7 @@ namespace DoFactory.GangOfFour.Strategy.NETOptimized
     }
 
     /// <summary>
-    /// A 'ConcreteStrategy' class
+    ///     A 'ConcreteStrategy' class
     /// </summary>
     class MergeSort : ISortStrategy
     {
@@ -141,7 +141,7 @@ namespace DoFactory.GangOfFour.Strategy.NETOptimized
     }
 
     /// <summary>
-    /// The 'Context' class
+    ///     The 'Context' class
     /// </summary>
     class SortedList : List<Student>
     {
@@ -163,7 +163,7 @@ namespace DoFactory.GangOfFour.Strategy.NETOptimized
     }
 
     /// <summary>
-    /// Represents a student
+    ///     Represents a student
     /// </summary>
     class Student
     {

@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Adapter.RealWorld
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Adapter Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Adapter Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -33,7 +33,7 @@ namespace DoFactory.GangOfFour.Adapter.RealWorld
     }
 
     /// <summary>
-    /// The 'Target' class
+    ///     The 'Target' class
     /// </summary>
     class Compound
     {
@@ -49,18 +49,22 @@ namespace DoFactory.GangOfFour.Adapter.RealWorld
     }
 
     /// <summary>
-    /// The 'Adapter' class
+    ///     The 'Adapter' class
     /// </summary>
     class RichCompound : Compound
     {
         string chemical;
         ChemicalDatabank bank;
 
+        #region CONSTRUCTORS
+
         // Constructor
         public RichCompound(string chemical)
         {
             this.chemical = chemical;
         }
+
+        #endregion
 
         public override void Display()
         {
@@ -81,7 +85,7 @@ namespace DoFactory.GangOfFour.Adapter.RealWorld
     }
 
     /// <summary>
-    /// The 'Adaptee' class
+    ///     The 'Adaptee' class
     /// </summary>
     class ChemicalDatabank
     {

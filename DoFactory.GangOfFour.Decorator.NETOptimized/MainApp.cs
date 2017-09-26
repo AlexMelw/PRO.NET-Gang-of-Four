@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Decorator.NETOptimized
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Decorator Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Decorator Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -37,7 +37,7 @@ namespace DoFactory.GangOfFour.Decorator.NETOptimized
     }
 
     /// <summary>
-    /// The 'Component' abstract class
+    ///     The 'Component' abstract class
     /// </summary>
     abstract class LibraryItem<T>
     {
@@ -48,12 +48,14 @@ namespace DoFactory.GangOfFour.Decorator.NETOptimized
     }
 
     /// <summary>
-    /// The 'ConcreteComponent' class
+    ///     The 'ConcreteComponent' class
     /// </summary>
     class Book : LibraryItem<Book>
     {
         string author;
         string title;
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Book(string author, string title, int numCopies)
@@ -62,6 +64,8 @@ namespace DoFactory.GangOfFour.Decorator.NETOptimized
             this.title = title;
             NumCopies = numCopies;
         }
+
+        #endregion
 
         public override void Display()
         {
@@ -73,13 +77,15 @@ namespace DoFactory.GangOfFour.Decorator.NETOptimized
     }
 
     /// <summary>
-    /// The 'ConcreteComponent' class
+    ///     The 'ConcreteComponent' class
     /// </summary>
     class Video : LibraryItem<Video>
     {
         string director;
         string title;
         int playTime;
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Video(string director, string title,
@@ -90,6 +96,8 @@ namespace DoFactory.GangOfFour.Decorator.NETOptimized
             NumCopies = numCopies;
             this.playTime = playTime;
         }
+
+        #endregion
 
         public override void Display()
         {
@@ -102,17 +110,21 @@ namespace DoFactory.GangOfFour.Decorator.NETOptimized
     }
 
     /// <summary>
-    /// The 'Decorator' abstract class
+    ///     The 'Decorator' abstract class
     /// </summary>
     abstract class Decorator<T> : LibraryItem<T>
     {
         LibraryItem<T> libraryItem;
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Decorator(LibraryItem<T> libraryItem)
         {
             this.libraryItem = libraryItem;
         }
+
+        #endregion
 
         public override void Display()
         {
@@ -121,17 +133,19 @@ namespace DoFactory.GangOfFour.Decorator.NETOptimized
     }
 
     /// <summary>
-    /// The 'ConcreteDecorator' class
+    ///     The 'ConcreteDecorator' class
     /// </summary>
     class Borrowable<T> : Decorator<T>
     {
         List<string> borrowers = new List<string>();
 
+        #region CONSTRUCTORS
+
         // Constructor
         public Borrowable(LibraryItem<T> libraryItem)
-            : base(libraryItem)
-        {
-        }
+            : base(libraryItem) { }
+
+        #endregion
 
         public void BorrowItem(string name)
         {
@@ -148,7 +162,7 @@ namespace DoFactory.GangOfFour.Decorator.NETOptimized
         public override void Display()
         {
             base.Display();
-            borrowers.ForEach(b =>  Console.WriteLine(" borrower: " + b));
+            borrowers.ForEach(b => Console.WriteLine(" borrower: " + b));
         }
     }
 }
