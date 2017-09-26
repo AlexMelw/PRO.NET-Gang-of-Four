@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Prototype.RealWorld
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Prototype Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Prototype Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -37,7 +37,7 @@ namespace DoFactory.GangOfFour.Prototype.RealWorld
     }
 
     /// <summary>
-    /// The 'Prototype' abstract class
+    ///     The 'Prototype' abstract class
     /// </summary>
     abstract class ColorPrototype
     {
@@ -45,13 +45,15 @@ namespace DoFactory.GangOfFour.Prototype.RealWorld
     }
 
     /// <summary>
-    /// The 'ConcretePrototype' class
+    ///     The 'ConcretePrototype' class
     /// </summary>
     class Color : ColorPrototype
     {
         int red;
         int green;
         int blue;
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Color(int red, int green, int blue)
@@ -61,30 +63,29 @@ namespace DoFactory.GangOfFour.Prototype.RealWorld
             this.blue = blue;
         }
 
+        #endregion
+
         // Create a shallow copy
         public override ColorPrototype Clone()
         {
-            Console.WriteLine(
-                "Cloning color RGB: {0,3},{1,3},{2,3}",
-                red, green, blue);
+            Console.WriteLine($"Cloning color RGB: {red,3},{green,3},{blue,3}");
 
-            return this.MemberwiseClone() as ColorPrototype;
+            return MemberwiseClone() as ColorPrototype;
         }
     }
 
     /// <summary>
-    /// Prototype manager
+    ///     Prototype manager
     /// </summary>
     class ColorManager
     {
-        private Dictionary<string, ColorPrototype> colors =
-            new Dictionary<string, ColorPrototype>();
+        private Dictionary<string, ColorPrototype> colors = new Dictionary<string, ColorPrototype>();
 
         // Indexer
         public ColorPrototype this[string key]
         {
-            get { return colors[key]; }
-            set { colors.Add(key, value); }
+            get => colors[key];
+            set => colors.Add(key, value);
         }
     }
 }

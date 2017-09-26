@@ -1,15 +1,15 @@
-using System;
-
 namespace DoFactory.GangOfFour.Factory.Structural
 {
+    using System;
+
     /// <summary>
-    /// MainApp startup class for Structural 
-    /// Factory Method Design Pattern.
+    ///     MainApp startup class for Structural
+    ///     Factory Method Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -33,28 +33,22 @@ namespace DoFactory.GangOfFour.Factory.Structural
     }
 
     /// <summary>
-    /// The 'Product' abstract class
+    ///     The 'Product' abstract class
     /// </summary>
-    abstract class Product
-    {
-    }
+    abstract class Product { }
 
     /// <summary>
-    /// A 'ConcreteProduct' class
+    ///     A 'ConcreteProduct' class
     /// </summary>
-    class ConcreteProductA : Product
-    {
-    }
+    class ConcreteProductA : Product { }
 
     /// <summary>
-    /// A 'ConcreteProduct' class
+    ///     A 'ConcreteProduct' class
     /// </summary>
-    class ConcreteProductB : Product
-    {
-    }
+    class ConcreteProductB : Product { }
 
     /// <summary>
-    /// The 'Creator' abstract class
+    ///     The 'Creator' abstract class
     /// </summary>
     abstract class Creator
     {
@@ -62,7 +56,7 @@ namespace DoFactory.GangOfFour.Factory.Structural
     }
 
     /// <summary>
-    /// A 'ConcreteCreator' class
+    ///     A 'ConcreteCreator' class
     /// </summary>
     class ConcreteCreatorA : Creator
     {
@@ -73,7 +67,7 @@ namespace DoFactory.GangOfFour.Factory.Structural
     }
 
     /// <summary>
-    /// A 'ConcreteCreator' class
+    ///     A 'ConcreteCreator' class
     /// </summary>
     class ConcreteCreatorB : Creator
     {

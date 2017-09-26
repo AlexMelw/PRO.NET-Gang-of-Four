@@ -37,22 +37,22 @@ namespace DoFactory.GangOfFour.Builder.NETOptimized
     /// </summary>
     internal class Shop
     {
-        private VehicleBuilder _vehicleBuilder;
+        private VehicleBuilder vehicleBuilder;
 
         // Builder uses a complex series of steps
         public void Construct(VehicleBuilder vehicleBuilder)
         {
-            _vehicleBuilder = vehicleBuilder;
+            this.vehicleBuilder = vehicleBuilder;
 
-            _vehicleBuilder.BuildFrame();
-            _vehicleBuilder.BuildEngine();
-            _vehicleBuilder.BuildWheels();
-            _vehicleBuilder.BuildDoors();
+            this.vehicleBuilder.BuildFrame();
+            this.vehicleBuilder.BuildEngine();
+            this.vehicleBuilder.BuildWheels();
+            this.vehicleBuilder.BuildDoors();
         }
 
         public void ShowVehicle()
         {
-            _vehicleBuilder.Vehicle.Show();
+            vehicleBuilder.Vehicle.Show();
         }
     }
 
@@ -185,13 +185,13 @@ namespace DoFactory.GangOfFour.Builder.NETOptimized
     /// </summary>
     internal class Vehicle
     {
-        private readonly Dictionary<PartType, string> _parts = new Dictionary<PartType, string>();
-        private readonly VehicleType _vehicleType;
+        private readonly Dictionary<PartType, string> parts = new Dictionary<PartType, string>();
+        private readonly VehicleType vehicleType;
 
         public string this[PartType key]
         {
-            get => _parts[key];
-            set => _parts[key] = value;
+            get => parts[key];
+            set => parts[key] = value;
         }
 
         #region CONSTRUCTORS
@@ -199,7 +199,7 @@ namespace DoFactory.GangOfFour.Builder.NETOptimized
         // Constructor
         public Vehicle(VehicleType vehicleType)
         {
-            _vehicleType = vehicleType;
+            this.vehicleType = vehicleType;
         }
 
         #endregion
@@ -207,15 +207,11 @@ namespace DoFactory.GangOfFour.Builder.NETOptimized
         public void Show()
         {
             Console.WriteLine("\n---------------------------");
-            Console.WriteLine("Vehicle Type: {0}", _vehicleType);
-            Console.WriteLine(" Frame  : {0}",
-                this[PartType.Frame]);
-            Console.WriteLine(" Engine : {0}",
-                this[PartType.Engine]);
-            Console.WriteLine(" #Wheels: {0}",
-                this[PartType.Wheel]);
-            Console.WriteLine(" #Doors : {0}",
-                this[PartType.Door]);
+            Console.WriteLine("Vehicle Type: {0}", vehicleType);
+            Console.WriteLine($" Frame  : {this[PartType.Frame]}");
+            Console.WriteLine($" Engine : {this[PartType.Engine]}");
+            Console.WriteLine($" #Wheels: {this[PartType.Wheel]}");
+            Console.WriteLine($" #Doors : {this[PartType.Door]}");
         }
     }
 

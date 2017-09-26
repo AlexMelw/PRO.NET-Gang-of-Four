@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Singleton.NETOptimized
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for .NET optimized 
-    /// Singleton Design Pattern.
+    ///     MainApp startup class for .NET optimized
+    ///     Singleton Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -39,7 +39,7 @@ namespace DoFactory.GangOfFour.Singleton.NETOptimized
     }
 
     /// <summary>
-    /// The 'Singleton' class
+    ///     The 'Singleton' class
     /// </summary>
     sealed class LoadBalancer
     {
@@ -52,6 +52,17 @@ namespace DoFactory.GangOfFour.Singleton.NETOptimized
         List<Server> servers;
 
         Random random = new Random();
+
+        // Simple, but effective load balancer
+        public Server NextServer
+        {
+            get {
+                int r = random.Next(servers.Count);
+                return servers[r];
+            }
+        }
+
+        #region CONSTRUCTORS
 
         // Note: constructor is 'private'
         private LoadBalancer()
@@ -67,23 +78,16 @@ namespace DoFactory.GangOfFour.Singleton.NETOptimized
             };
         }
 
+        #endregion
+
         public static LoadBalancer GetLoadBalancer()
         {
             return instance;
         }
-
-        // Simple, but effective load balancer
-        public Server NextServer
-        {
-            get {
-                int r = random.Next(servers.Count);
-                return servers[r];
-            }
-        }
     }
 
     /// <summary>
-    /// Represents a server machine
+    ///     Represents a server machine
     /// </summary>
     class Server
     {

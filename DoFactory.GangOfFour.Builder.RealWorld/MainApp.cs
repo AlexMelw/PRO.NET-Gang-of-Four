@@ -1,26 +1,24 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Builder.RealWorld
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Builder Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Builder Design Pattern.
     /// </summary>
     public class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         public static void Main()
         {
-            VehicleBuilder builder;
-
             // Create shop with vehicle builders
             Shop shop = new Shop();
 
             // Construct and display vehicles
-            builder = new ScooterBuilder();
+            VehicleBuilder builder = new ScooterBuilder();
             shop.Construct(builder);
             builder.Vehicle.Show();
 
@@ -38,7 +36,7 @@ namespace DoFactory.GangOfFour.Builder.RealWorld
     }
 
     /// <summary>
-    /// The 'Director' class
+    ///     The 'Director' class
     /// </summary>
     class Shop
     {
@@ -53,34 +51,36 @@ namespace DoFactory.GangOfFour.Builder.RealWorld
     }
 
     /// <summary>
-    /// The 'Builder' abstract class
+    ///     The 'Builder' abstract class
     /// </summary>
     abstract class VehicleBuilder
     {
         protected Vehicle vehicle;
 
         // Gets vehicle instance
-        public Vehicle Vehicle
-        {
-            get { return vehicle; }
-        }
+        public Vehicle Vehicle => vehicle;
 
         // Abstract build methods
         public abstract void BuildFrame();
+
         public abstract void BuildEngine();
         public abstract void BuildWheels();
         public abstract void BuildDoors();
     }
 
     /// <summary>
-    /// The 'ConcreteBuilder1' class
+    ///     The 'ConcreteBuilder1' class
     /// </summary>
     class MotorCycleBuilder : VehicleBuilder
     {
+        #region CONSTRUCTORS
+
         public MotorCycleBuilder()
         {
             vehicle = new Vehicle("MotorCycle");
         }
+
+        #endregion
 
         public override void BuildFrame()
         {
@@ -103,16 +103,20 @@ namespace DoFactory.GangOfFour.Builder.RealWorld
         }
     }
 
-    
+
     /// <summary>
-    /// The 'ConcreteBuilder2' class
+    ///     The 'ConcreteBuilder2' class
     /// </summary>
     class CarBuilder : VehicleBuilder
     {
+        #region CONSTRUCTORS
+
         public CarBuilder()
         {
             vehicle = new Vehicle("Car");
         }
+
+        #endregion
 
         public override void BuildFrame()
         {
@@ -136,14 +140,18 @@ namespace DoFactory.GangOfFour.Builder.RealWorld
     }
 
     /// <summary>
-    /// The 'ConcreteBuilder3' class
+    ///     The 'ConcreteBuilder3' class
     /// </summary>
     class ScooterBuilder : VehicleBuilder
     {
+        #region CONSTRUCTORS
+
         public ScooterBuilder()
         {
             vehicle = new Vehicle("Scooter");
         }
+
+        #endregion
 
         public override void BuildFrame()
         {
@@ -167,12 +175,21 @@ namespace DoFactory.GangOfFour.Builder.RealWorld
     }
 
     /// <summary>
-    /// The 'Product' class
+    ///     The 'Product' class
     /// </summary>
     class Vehicle
     {
         string vehicleType;
-        Dictionary<string,string> parts = new Dictionary<string,string>();
+        Dictionary<string, string> parts = new Dictionary<string, string>();
+
+        // Indexer
+        public string this[string key]
+        {
+            get => parts[key];
+            set => parts[key] = value;
+        }
+
+        #region CONSTRUCTORS
 
         // Constructor
         public Vehicle(string vehicleType)
@@ -180,22 +197,16 @@ namespace DoFactory.GangOfFour.Builder.RealWorld
             this.vehicleType = vehicleType;
         }
 
-        // Indexer
-        public string this[string key]
-        {
-            get { return parts[key]; }
-            set { parts[key] = value; }
-        }
+        #endregion
 
         public void Show()
         {
             Console.WriteLine("\n---------------------------");
-            Console.WriteLine("Vehicle Type: {0}", vehicleType);
-            Console.WriteLine(" Frame  : {0}", parts["frame"]);
-            Console.WriteLine(" Engine : {0}", parts["engine"]);
-            Console.WriteLine(" #Wheels: {0}", parts["wheels"]);
-            Console.WriteLine(" #Doors : {0}", parts["doors"]);
+            Console.WriteLine($"Vehicle Type: {vehicleType}");
+            Console.WriteLine($" Frame  : {parts["frame"]}");
+            Console.WriteLine($" Engine : {parts["engine"]}");
+            Console.WriteLine($" #Wheels: {parts["wheels"]}");
+            Console.WriteLine($" #Doors : {parts["doors"]}");
         }
     }
 }
-

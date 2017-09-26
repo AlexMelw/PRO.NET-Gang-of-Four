@@ -1,17 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Threading;
-
 namespace DoFactory.GangOfFour.Singleton.RealWorld
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Singleton Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Singleton Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -40,16 +39,29 @@ namespace DoFactory.GangOfFour.Singleton.RealWorld
     }
 
     /// <summary>
-    /// The 'Singleton' class
+    ///     The 'Singleton' class
     /// </summary>
     class LoadBalancer
     {
         static LoadBalancer instance;
-        List<string> servers = new List<string>();
-        Random random = new Random();
 
         // Lock synchronization object
         private static object locker = new object();
+
+        List<string> servers = new List<string>();
+
+        Random random = new Random();
+
+        // Simple, but effective random load balancer
+        public string Server
+        {
+            get {
+                int r = random.Next(servers.Count);
+                return servers[r];
+            }
+        }
+
+        #region CONSTRUCTORS
 
         // Constructor (protected)
         protected LoadBalancer()
@@ -61,6 +73,8 @@ namespace DoFactory.GangOfFour.Singleton.RealWorld
             servers.Add("ServerIV");
             servers.Add("ServerV");
         }
+
+        #endregion
 
         public static LoadBalancer GetLoadBalancer()
         {
@@ -80,16 +94,6 @@ namespace DoFactory.GangOfFour.Singleton.RealWorld
             }
 
             return instance;
-        }
-
-        // Simple, but effective random load balancer
-        public string Server
-        {
-            get
-            {
-                int r = random.Next(servers.Count);
-                return servers[r].ToString();
-            }
         }
     }
 }

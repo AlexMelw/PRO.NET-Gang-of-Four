@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace DoFactory.GangOfFour.Factory.RealWorld
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Factory Method Design Pattern.
+    ///     MainApp startup class for Real-World
+    ///     Factory Method Design Pattern.
     /// </summary>
     class MainApp
     {
         /// <summary>
-        /// Entry point into console application.
+        ///     Entry point into console application.
         /// </summary>
         static void Main()
         {
@@ -36,92 +36,78 @@ namespace DoFactory.GangOfFour.Factory.RealWorld
     }
 
     /// <summary>
-    /// The 'Product' abstract class
+    ///     The 'Product' abstract class
     /// </summary>
-    abstract class Page
-    {
-    }
+    abstract class Page { }
 
     /// <summary>
-    /// A 'ConcreteProduct' class
+    ///     A 'ConcreteProduct' class
     /// </summary>
-    class SkillsPage : Page
-    {
-    }
+    class SkillsPage : Page { }
 
     /// <summary>
-    /// A 'ConcreteProduct' class
+    ///     A 'ConcreteProduct' class
     /// </summary>
-    class EducationPage : Page
-    {
-    }
+    class EducationPage : Page { }
 
     /// <summary>
-    /// A 'ConcreteProduct' class
+    ///     A 'ConcreteProduct' class
     /// </summary>
-    class ExperiencePage : Page
-    {
-    }
+    class ExperiencePage : Page { }
 
     /// <summary>
-    /// A 'ConcreteProduct' class
+    ///     A 'ConcreteProduct' class
     /// </summary>
-    class IntroductionPage : Page
-    {
-    }
+    class IntroductionPage : Page { }
 
     /// <summary>
-    /// A 'ConcreteProduct' class
+    ///     A 'ConcreteProduct' class
     /// </summary>
-    class ResultsPage : Page
-    {
-    }
+    class ResultsPage : Page { }
 
     /// <summary>
-    /// A 'ConcreteProduct' class
+    ///     A 'ConcreteProduct' class
     /// </summary>
-    class ConclusionPage : Page
-    {
-    }
+    class ConclusionPage : Page { }
 
     /// <summary>
-    /// A 'ConcreteProduct' class
+    ///     A 'ConcreteProduct' class
     /// </summary>
-    class SummaryPage : Page
-    {
-    }
+    class SummaryPage : Page { }
 
     /// <summary>
-    /// A 'ConcreteProduct' class
+    ///     A 'ConcreteProduct' class
     /// </summary>
-    class BibliographyPage : Page
-    {
-    }
+    class BibliographyPage : Page { }
 
     /// <summary>
-    /// The 'Creator' abstract class
+    ///     The 'Creator' abstract class
     /// </summary>
     abstract class Document
     {
         List<Page> pages = new List<Page>();
-
-        // Constructor calls abstract Factory method
-        public Document()
-        {
-            this.CreatePages();
-        }
 
         public List<Page> Pages
         {
             get { return pages; }
         }
 
+        #region CONSTRUCTORS
+
+        // Constructor calls abstract Factory method
+        public Document()
+        {
+            CreatePages();
+        }
+
+        #endregion
+
         // Factory Method
         public abstract void CreatePages();
     }
 
     /// <summary>
-    /// A 'ConcreteCreator' class
+    ///     A 'ConcreteCreator' class
     /// </summary>
     class Resume : Document
     {
@@ -135,7 +121,7 @@ namespace DoFactory.GangOfFour.Factory.RealWorld
     }
 
     /// <summary>
-    /// A 'ConcreteCreator' class
+    ///     A 'ConcreteCreator' class
     /// </summary>
     class Report : Document
     {
